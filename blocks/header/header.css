@@ -1,0 +1,9 @@
+@import url('__logo/header__logo.css');
+.header {
+  display: flex;  
+  margin: 45px 199px 40px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  justify-content: start;
+  align-items: flex-start;
+  padding-bottom: 40.6px;
+}
