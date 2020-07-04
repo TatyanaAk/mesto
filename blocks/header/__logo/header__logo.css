@@ -1,6 +1,24 @@
 .header__logo {
     width: 142.01px;
     min-height: 33.4px;
-    margin: 0;
+    /* margin: 0; */
     
 }
+@media only screen and (max-width: 909px) {
+    .header__logo {
+      margin-left: calc(909px - 100vw);
+   }
+  }
+  @media only screen and (max-width: 882px) {
+    .header__logo {
+      margin-left: 27px;
+   }
+  }
+
+@media only screen and (max-width: 500px) {
+    .header__logo {
+      width: 103.74px;
+      min-height: 24.4px;
+      margin: 28px auto 31.6px 27px;
+   }
+  }

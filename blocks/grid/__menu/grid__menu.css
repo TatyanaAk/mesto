@@ -1,0 +1,19 @@
+.grid__menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+    grid-gap: 18px;
+    padding: 0;
+    margin: 0 auto;
+}
+@media only screen and (max-width: 901px) {
+    .grid__menu {
+        grid-gap: 20px;
+        margin-left: 19px;
+        margin-right: 19px;
+   }
+  }
+@media only screen and (max-width: 500px) {
+    .grid__menu {
+        grid-gap: 20px;
+   }
+  }

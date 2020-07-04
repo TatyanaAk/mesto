@@ -2,3 +2,12 @@
 @import url('__heart/grid__heart.css');
 @import url('__grid-image/grid__grid-image.css');
 @import url('__title/grid__title.css');
+@import url('__menu/grid__menu.css');
+@import url('__description/grid__description.css');
+
+.grid {
+   max-width: 882px;
+   list-style: none;
+   margin: 0 auto;
+   padding: 0 19px;
+}

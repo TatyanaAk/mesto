@@ -1,9 +1,17 @@
 @import url('__logo/header__logo.css');
 .header {
+  max-width: 882px;
   display: flex;  
-  margin: 45px 199px 40px;
+  margin: 45px auto 40px;
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
   justify-content: start;
   align-items: flex-start;
   padding-bottom: 40.6px;
+}
+
+
+@media only screen and (max-width: 500px) {
+  .header {
+    margin: 0 0 38.25px 0;
+ }
 }

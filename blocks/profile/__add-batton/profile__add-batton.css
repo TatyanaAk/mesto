@@ -1,0 +1,18 @@
+.profile__add-batton {
+    border: 2px solid #FFFFFF;
+    border-radius: 2px;
+    width: 150px;
+    height: 50px;
+    align-self: center;
+    margin-left: auto;
+    margin-right: 0;
+    background-image: url('../../../images/logo2.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+@media only screen and (max-width: 500px) {
+    .profile__add-batton {
+        width: 282px;
+        margin: 0 auto;
+   }
+  }

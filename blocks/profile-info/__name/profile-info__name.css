@@ -1,0 +1,16 @@
+.profile-info__name {
+    color: #FFFFFF;
+    margin: 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 56px;
+}
+@media only screen and (max-width: 500px) {
+    .profile-info__name {
+        font-size: 27px;
+        line-height: 2.07;
+        text-align: center;
+        
+   }
+  }
