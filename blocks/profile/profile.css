@@ -1,10 +1,18 @@
 @import url('__avatar/profile__avatar.css');
 @import url('__add-batton/profile__add-batton.css');
  .profile {
-     margin: 0 199px 51px;
+     margin: 0 auto 51px;
      position: relative;
      display: flex;
+     max-width: 882px;
  }
+ @media only screen and (max-width: 700px) {
+  .profile {
+    flex-direction: column;
+    margin: 0 30px 45px;
+    align-items: center;
+ }
+}
 
  @media only screen and (max-width: 500px) {
     .profile {

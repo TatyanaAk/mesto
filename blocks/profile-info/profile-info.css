@@ -3,15 +3,14 @@
 @import url('__memo/profile-info__memo.css');
 @import url('__info/profile-info__info.css');
 .profile-info {
-    min-width: 336px;
     display: flex;
     justify-content: space-between;
-    margin: 18px 0 25px 30px;
+    margin: 18px auto 25px 30px;
 }
 
- @media only screen and (max-width: 500px) {
+ @media only screen and (max-width: 700px) {
     .profile-info {
-      margin: 10.25px 20px 36px;
+      margin: 10.25px auto 36px;
       align-items: center;
       justify-content: center;
       min-width: 220px;

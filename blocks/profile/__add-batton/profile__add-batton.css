@@ -10,9 +10,21 @@
     background-repeat: no-repeat;
     background-position: center;
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 909px) {
+    .profile__add-batton {
+        margin-right: calc((909px - 100vw)/2);
+   }
+  }
+
+  @media only screen and (max-width: 882px) {
+    .profile__add-batton {
+        margin-right: 19px;
+   }
+  } 
+@media only screen and (max-width: 700px) {
     .profile__add-batton {
         width: 282px;
         margin: 0 auto;
+        
    }
   }

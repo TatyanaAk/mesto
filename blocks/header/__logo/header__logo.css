@@ -4,9 +4,10 @@
     /* margin: 0; */
     
 }
-@media only screen and (max-width: 909px) {
+/*  */
+@media only screen and (max-width: 936px) {
     .header__logo {
-      margin-left: calc(909px - 100vw);
+      margin-left: calc((936px - 100vw)/2);
    }
   }
   @media only screen and (max-width: 882px) {

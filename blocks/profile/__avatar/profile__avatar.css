@@ -3,3 +3,18 @@
     max-width: 120px;
     margin: 0;
 }
+@media only screen and (max-width: 901px) {
+    .profile__avatar {
+      margin-left: calc(901px - 100vw);
+   }
+  }
+  @media only screen and (max-width: 882px) {
+    .profile__avatar {
+      margin-left: 19px;
+   }
+  }
+  @media only screen and (max-width: 500px) {
+    .profile__avatar {
+      margin: 0 auto;
+   }
+  }
