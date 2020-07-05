@@ -2,3 +2,15 @@
 @import url('__heading/form__heading.css');
 @import url('__item/form__item.css');
 @import url('__batton/form__batton.css');
+@import url('__batton-text/form__batton-text.css');
+.form {
+    display: flex;
+    max-width: 430px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    position: relative;
+    flex-direction: column;
+    padding: 34px 36px 36.51px;
+    color: black;
+}

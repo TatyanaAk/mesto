@@ -1,0 +1,9 @@
+.form__close-icon {
+    position: absolute;
+    top: -45px;
+    right: -45px;
+    background-image: url(../../../images/CloseIcon.svg);
+    width: 58px;
+    height: 58px;
+    background-size: cover;
+}

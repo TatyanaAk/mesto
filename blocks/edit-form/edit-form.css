@@ -1,1 +1,12 @@
-
+@import url('_open/edit-form_open.css');
+.edit-form {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: #1f1f1a80;
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+}

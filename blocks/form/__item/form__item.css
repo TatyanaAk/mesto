@@ -1,2 +1,12 @@
 @import url('_name/form__item_name.css');
 @import url('_memo/form__item_memo.css');
+.form__item {
+    display: flex;
+    margin: 0;
+    min-height: 57.8px;
+    border-bottom: 1px solid #00000033;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    box-sizing: border-box;
+}
