@@ -1,11 +1,12 @@
 @import url('__edit-button/profile-info__edit-button.css');
 @import url('__name/profile-info__name.css');
 @import url('__memo/profile-info__memo.css');
-@import url('__info/profile-info__info.css');
+
 .profile-info {
     display: flex;
     justify-content: space-between;
     margin: 18px auto 25px 30px;
+    max-width: 340px;
 }
 
  @media only screen and (max-width: 700px) {

@@ -6,4 +6,17 @@
     width: 58px;
     height: 58px;
     background-size: cover;
+    cursor: pointer;
+    margin: 0;
 }
+.form__close-icon:hover {
+    background-image: url(../../../images/closeIconHover.svg);
+}
+@media only screen and (max-width: 500px) {
+    .form__close-icon {
+        width: 30px;
+        height: 30px;
+        top: -22px;
+        right: -22px;
+   }
+  } 
