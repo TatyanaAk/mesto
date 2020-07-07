@@ -6,14 +6,13 @@
     align-self: center;
     margin-left: auto;
     margin-right: 0;
-    background-image: url('../../../images/addbutton.svg');
+    background-image: url('../../../images/addButton.svg');
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
     background-color: transparent;
 }
 .profile__add-button:hover {
-    /* background-image: url('../../../images/addbuttonHover.svg'); */
     border: 2px solid rgba(255, 255, 255, 0.6);
     opacity: 0.6;
 }
