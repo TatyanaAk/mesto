@@ -8,9 +8,13 @@
     background-size: cover;
     cursor: pointer;
     margin: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    
 }
 .form__close-icon:hover {
-    background-image: url(../../../images/closeIconHover.svg);
+    opacity: 0.6;
 }
 @media only screen and (max-width: 500px) {
     .form__close-icon {

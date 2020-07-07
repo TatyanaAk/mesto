@@ -9,4 +9,5 @@
     border-left-style: none;
     border-right-style: none;
     box-sizing: border-box;
+    outline: none;
 }

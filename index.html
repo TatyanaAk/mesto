@@ -21,9 +21,9 @@
                 <h1 class="profile-info__name">Жак-Ив Кусто</h1>
                 <p class="profile-info__memo">Исследователь океана</p>
                </div>
-               <batton class="profile-info__edit-button"></batton>
+               <button class="profile-info__edit-button"></button>
             </div> 
-            <batton class="profile__add-batton"></batton>
+            <button class="profile__add-button"></button>
         </section>
         <section class="grid">
             <ul class="grid__menu">
@@ -71,13 +71,11 @@
     </footer>
     <div class="edit-form">
         <form action="#" class="form">
-            <batton class="form__close-icon"></batton>
+            <button class="form__close-icon"></button>
             <h2 class="form__heading">Редактировать профиль</h2>
-            <input type="text" class="form__item form__item_name">
-            <input type="text" class="form__item form__item_memo">
-            <batton type="submit" class="form__batton">
-                <p class="form__batton-text">Сохранить</p>
-            </batton>
+            <input type="text" name="name" class="form__item form__item_name">
+            <input type="text" name="memo" class="form__item form__item_memo">
+            <button type="submit" class="form__button">Сохранить</button>
         </form>
     </div>
     <script src="scripts/index.js"></script>

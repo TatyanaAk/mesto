@@ -1,8 +1,7 @@
 @import url('__close-icon/form__close-icon.css');
 @import url('__heading/form__heading.css');
 @import url('__item/form__item.css');
-@import url('__batton/form__batton.css');
-@import url('__batton-text/form__batton-text.css');
+@import url('__button/form__button.css');
 .form {
     display: flex;
     max-width: 430px;
@@ -17,5 +16,6 @@
 @media only screen and (max-width: 500px) {
     .form {
         max-width: 200px;
+        text-align: center;
    }
   } 

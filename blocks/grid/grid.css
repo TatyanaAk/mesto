@@ -11,3 +11,13 @@
    margin: 0 auto;
    padding: 0 19px;
 }
+@media only screen and (max-width: 901px) {
+   .grid {
+       padding: 0 50px;
+  }
+ }
+ @media only screen and (max-width: 500px) {
+   .grid {
+       padding: 0 19px;
+  }
+ }
