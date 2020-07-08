@@ -2,4 +2,11 @@
     width: 20.76px;
     height: 18.13px;
     margin: 32px 17.24px 29.87px auto;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+.grid__heart:hover {
+    opacity: 0.6;
 }
