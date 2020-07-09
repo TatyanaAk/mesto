@@ -1,10 +1,10 @@
-const openEditButton = document.querySelector('.profile-info__edit-button');
+const openEditButton = document.querySelector('.profile__edit-button');
 const closeEditButton = document.querySelector('.form__close-icon');
-let profileInfo = document.querySelector('.profile-info');
+let profileInfo = document.querySelector('.profile__profile-info');
 let editForm = document.querySelector('.edit-form');
 let form = editForm.querySelector('.form');
-let name = profileInfo.querySelector('.profile-info__name');
-let memo = profileInfo.querySelector('.profile-info__memo');
+let name = profileInfo.querySelector('.profile__name');
+let memo = profileInfo.querySelector('.profile__memo');
 let inputName = form.querySelector('.form__item_name');
 let inputMemo = form.querySelector('.form__item_memo');
 
