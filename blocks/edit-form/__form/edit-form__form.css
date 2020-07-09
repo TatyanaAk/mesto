@@ -1,8 +1,4 @@
-@import url('__close-icon/form__close-icon.css');
-@import url('__heading/form__heading.css');
-@import url('__item/form__item.css');
-@import url('__button/form__button.css');
-.form {
+.edit-form__form {
     display: flex;
     max-width: 430px;
     background: #FFFFFF;
@@ -14,7 +10,7 @@
     color: black;
 }
 @media only screen and (max-width: 500px) {
-    .form {
+    .edit-form__form {
         max-width: 200px;
         text-align: center;
    }

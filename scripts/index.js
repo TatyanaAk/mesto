@@ -1,12 +1,12 @@
 const openEditButton = document.querySelector('.profile__edit-button');
-const closeEditButton = document.querySelector('.form__close-icon');
+const closeEditButton = document.querySelector('.edit-form__close-icon');
 let profileInfo = document.querySelector('.profile__profile-info');
 let editForm = document.querySelector('.edit-form');
-let form = editForm.querySelector('.form');
+let form = editForm.querySelector('.edit-form__form');
 let name = profileInfo.querySelector('.profile__name');
 let memo = profileInfo.querySelector('.profile__memo');
-let inputName = form.querySelector('.form__item_name');
-let inputMemo = form.querySelector('.form__item_memo');
+let inputName = form.querySelector('.edit-form__item_name');
+let inputMemo = form.querySelector('.edit-form__item_memo');
 
 
 function editFormToggle() {

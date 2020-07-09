@@ -1,4 +1,4 @@
-.form__close-icon {
+.edit-form__close-icon {
     position: absolute;
     top: -45px;
     right: -45px;
@@ -13,7 +13,7 @@
     outline: none;
     
 }
-.form__close-icon:hover {
+.edit-form__close-icon:hover {
     opacity: 0.6;
 }
 @media only screen and (max-width: 500px) {
