@@ -6,7 +6,6 @@
     display: flex;
     justify-content: space-between;
     margin: 18px auto 25px 30px;
-   
 }
 
  @media only screen and (max-width: 700px) {
@@ -15,5 +14,6 @@
       align-items: center;
       justify-content: center;
       min-width: 220px;
+      text-align: center;
    }
   } 
