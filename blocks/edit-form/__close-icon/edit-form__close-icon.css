@@ -11,6 +11,7 @@
     background-color: transparent;
     border: none;
     outline: none;
+    transition: opacity .3s ease;
     
 }
 .edit-form__close-icon:hover {
