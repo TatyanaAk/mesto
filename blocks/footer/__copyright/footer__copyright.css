@@ -3,7 +3,7 @@
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
-    line-height: 22px;
+    line-height: 1.2;
     margin: 0;
 }
 
@@ -20,7 +20,6 @@
   @media only screen and (max-width: 500px) {
     .footer__copyright {
         font-size: 14px;
-        line-height: 17px;
         margin: 0;
    }
   }
