@@ -4,6 +4,7 @@
 @import url('__title/grid__title.css');
 @import url('__menu/grid__menu.css');
 @import url('__description/grid__description.css');
+@import url('__heart/grid__heart_active.css');
 
 .grid {
    max-width: 882px;

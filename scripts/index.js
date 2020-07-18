@@ -62,5 +62,8 @@ for (let i = 0; i < initialCards.length; i += 1) {
     gridElement.querySelector('.grid__grid-image').src=initialCards[i].link;
     gridElement.querySelector('.grid__grid-image').alt = initialCards[i].name;
     gridElement.querySelector('.grid__title').textContent = initialCards[i].name;
+    gridElement.querySelector('.grid__heart').addEventListener('click', function (evt) {
+        evt.target.classList.toggle('grid__heart_active');
+    });
     gridMenu.append(gridElement);
 }
