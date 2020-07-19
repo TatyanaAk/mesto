@@ -20,7 +20,11 @@
     opacity: 0.8;
 }
 @media only screen and (max-width: 500px) {
-    .form__button {
+    .edit-form__button {
         max-width: 200px;
+        margin: 36px 0 0 0;
+        height: 40px;
+        font-size: 14px;
+        line-height: 17px;
    }
   } 

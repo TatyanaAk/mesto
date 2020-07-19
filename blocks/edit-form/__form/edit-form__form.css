@@ -13,5 +13,6 @@
     .edit-form__form {
         max-width: 200px;
         text-align: center;
+        padding: 30px 20px;
    }
   } 
