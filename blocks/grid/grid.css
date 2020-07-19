@@ -5,7 +5,7 @@
 @import url('__menu/grid__menu.css');
 @import url('__description/grid__description.css');
 @import url('__heart/grid__heart_active.css');
-
+@import url('__basket/grid__basket.css');
 .grid {
    max-width: 882px;
    list-style: none;

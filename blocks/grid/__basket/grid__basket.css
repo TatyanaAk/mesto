@@ -1,0 +1,18 @@
+.grid__basket {
+    width: 18px;
+    height: 19.3px;
+    top: 18px;
+    right: 15px; 
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    align-self: center;
+    background-image: url('../../../images/basket.svg');
+    flex-shrink: 0;
+    transition: opacity .2s ease;
+    position: absolute;
+}
+.grid__basket:hover {
+    opacity: 0.6;
+}

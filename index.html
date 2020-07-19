@@ -27,16 +27,6 @@
         </section>
         <section class="grid">
             <ul class="grid__menu">
-                <template id="card">
-                    <li class="grid__element">
-                        <img src="" alt="image" class="grid__grid-image">
-                        <div class="grid__description">
-                            <h3 class="grid__title"></h3>
-                            <button type="button" class="grid__heart">
-                            </button>
-                        </div>
-                    </li>
-                </template>
             </ul>
         </section>
     </main>
@@ -52,6 +42,26 @@
             <button type="submit" class="edit-form__button">Сохранить</button>
         </form>
     </div>
+    <div class="edit-form">
+        <form action="#" name="profile-edit" class="edit-form__form">
+            <button type="button" class="edit-form__close-icon"></button>
+            <h2 class="edit-form__heading">Новое место</h2>
+            <input type="text" name="title" class="edit-form__item edit-form__item_title">
+            <input type="text" name="link" class="edit-form__item edit-form__item_link">
+            <button type="submit" class="edit-form__button">Создать</button>
+        </form>
+    </div>
+    
+    <template id="card">
+        <li class="grid__element">
+            <img src="" alt="image" class="grid__grid-image">
+            <button type="button" class="grid__basket"></button>
+            <div class="grid__description">
+                <h3 class="grid__title"></h3>
+                <button type="button" class="grid__heart"></button>
+            </div>
+        </li>
+    </template>
     <script src="scripts/index.js"></script>
   </body>
 </html>

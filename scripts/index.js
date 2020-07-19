@@ -65,5 +65,10 @@ for (let i = 0; i < initialCards.length; i += 1) {
     gridElement.querySelector('.grid__heart').addEventListener('click', function (evt) {
         evt.target.classList.toggle('grid__heart_active');
     });
+    const deleteButton = gridElement.querySelector('.grid__basket');
+    deleteButton.addEventListener('click', function () {
+        const listItem = deleteButton.closest('.grid__element');
+        listItem.remove();
+    });
     gridMenu.append(gridElement);
 }
