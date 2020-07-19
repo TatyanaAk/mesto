@@ -24,16 +24,21 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+
 const openEditButton = document.querySelector('.profile__edit-button');
-const closeEditButton = document.querySelector('.edit-form__close-icon');
+const openAddCard = document.querySelector('.profile__add-button');
 let profileInfo = document.querySelector('.profile__profile-info');
-let editForm = document.querySelector('.edit-form');
+let editForm = document.querySelector('.edit-form_profile');
+let cardForm = document.querySelector('.edit-form_card');
+const closeEditForm = editForm.querySelector('.edit-form__close-icon');
+const closeAddCard = cardForm.querySelector('.edit-form__close-icon');
 let form = editForm.querySelector('.edit-form__form');
 let name = profileInfo.querySelector('.profile__name');
 let memo = profileInfo.querySelector('.profile__memo');
 let inputName = form.querySelector('.edit-form__item_name');
 let inputMemo = form.querySelector('.edit-form__item_memo');
-
+let inputTitle = cardForm.querySelector('.edit-form__item_title');
+let inputLink = cardForm.querySelector('.edit-form__item_link');
 
 function editFormToggle() {
     editForm.classList.toggle('edit-form_open');
@@ -43,6 +48,14 @@ function editFormToggle() {
     }
     
 }
+function cardFormToggle() {
+    cardForm.classList.toggle('edit-form_open');
+    if (!cardForm.classList.contains('edit-form_open')) {
+        inputTitle.value = '';
+        inputLink.value = '';
+    }
+}
+
 function saveProfile(event) {
     event.preventDefault();
     name.textContent = inputName.value;
@@ -50,9 +63,14 @@ function saveProfile(event) {
     editFormToggle();
 }
 openEditButton.addEventListener('click', editFormToggle);
-closeEditButton.addEventListener('click', editFormToggle);
+closeEditForm.addEventListener('click', editFormToggle);
+openAddCard.addEventListener('click', cardFormToggle);
+closeAddCard.addEventListener('click', cardFormToggle);
 
 form.addEventListener('submit',saveProfile);
+
+cardForm.querySelector('.edit-form__form').addEventListener('submit',addCard);
+
 
 const gridTemplate = document.querySelector('#card').content;
 const gridMenu = document.querySelector('.grid__menu');
@@ -71,4 +89,21 @@ for (let i = 0; i < initialCards.length; i += 1) {
         listItem.remove();
     });
     gridMenu.append(gridElement);
+}
+function addCard(event) {
+    event.preventDefault();
+    const gridElement = gridTemplate.cloneNode(true);
+    gridElement.querySelector('.grid__grid-image').src = inputLink.value;
+    gridElement.querySelector('.grid__grid-image').alt = inputTitle.value;
+    gridElement.querySelector('.grid__title').textContent = inputTitle.value;
+    gridElement.querySelector('.grid__heart').addEventListener('click', function (evt) {
+        evt.target.classList.toggle('grid__heart_active');
+    });
+    const deleteButton = gridElement.querySelector('.grid__basket');
+    deleteButton.addEventListener('click', function () {
+        const listItem = deleteButton.closest('.grid__element');
+        listItem.remove();
+    });
+    gridMenu.prepend(gridElement);
+    cardFormToggle();
 }
