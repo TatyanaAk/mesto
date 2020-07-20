@@ -30,8 +30,10 @@ const openAddCard = document.querySelector('.profile__add-button');
 let profileInfo = document.querySelector('.profile__profile-info');
 let editForm = document.querySelector('.edit-form_profile');
 let cardForm = document.querySelector('.edit-form_card');
+let cardZoom = document.querySelector('.edit-form_card-zoom');
 const closeEditForm = editForm.querySelector('.edit-form__close-icon');
 const closeAddCard = cardForm.querySelector('.edit-form__close-icon');
+const closeImage = cardZoom.querySelector('.edit-form__close-icon');
 let form = editForm.querySelector('.edit-form__form');
 let name = profileInfo.querySelector('.profile__name');
 let memo = profileInfo.querySelector('.profile__memo');
@@ -39,6 +41,7 @@ let inputName = form.querySelector('.edit-form__item_name');
 let inputMemo = form.querySelector('.edit-form__item_memo');
 let inputTitle = cardForm.querySelector('.edit-form__item_title');
 let inputLink = cardForm.querySelector('.edit-form__item_link');
+
 
 function editFormToggle() {
     editForm.classList.toggle('edit-form_open');
@@ -55,7 +58,22 @@ function cardFormToggle() {
         inputLink.value = '';
     }
 }
+function cardZoomToggle() {
+    cardZoom.classList.toggle('edit-form_open');
+}
 
+function editFormZoom(element) {
+    cardZoom.classList.toggle('edit-form_open');
+    if (cardZoom.classList.contains('edit-form_open')) {
+        cardZoom.querySelector('.edit-form__image-zoom').src = 
+            element.currentTarget.src;
+        cardZoom.querySelector('.edit-form__image-zoom').alt = 
+            element.currentTarget.alt;
+        cardZoom.querySelector('.edit-form__heading_zoom').textContent = element.currentTarget.alt;
+
+    }
+    
+}
 function saveProfile(event) {
     event.preventDefault();
     name.textContent = inputName.value;
@@ -66,6 +84,7 @@ openEditButton.addEventListener('click', editFormToggle);
 closeEditForm.addEventListener('click', editFormToggle);
 openAddCard.addEventListener('click', cardFormToggle);
 closeAddCard.addEventListener('click', cardFormToggle);
+closeImage.addEventListener('click', cardZoomToggle);
 
 form.addEventListener('submit',saveProfile);
 
@@ -77,7 +96,7 @@ const gridMenu = document.querySelector('.grid__menu');
 for (let i = 0; i < initialCards.length; i += 1) {
     // каждый раз создавать новый клон элемента
     const gridElement = gridTemplate.cloneNode(true);
-    gridElement.querySelector('.grid__grid-image').src=initialCards[i].link;
+    gridElement.querySelector('.grid__grid-image').src = initialCards[i].link;
     gridElement.querySelector('.grid__grid-image').alt = initialCards[i].name;
     gridElement.querySelector('.grid__title').textContent = initialCards[i].name;
     gridElement.querySelector('.grid__heart').addEventListener('click', function (evt) {
@@ -88,6 +107,7 @@ for (let i = 0; i < initialCards.length; i += 1) {
         const listItem = deleteButton.closest('.grid__element');
         listItem.remove();
     });
+    gridElement.querySelector('.grid__grid-image').addEventListener('click', editFormZoom);
     gridMenu.append(gridElement);
 }
 function addCard(event) {
@@ -104,6 +124,7 @@ function addCard(event) {
         const listItem = deleteButton.closest('.grid__element');
         listItem.remove();
     });
+    gridElement.querySelector('.grid__grid-image').addEventListener('click', editFormZoom);
     gridMenu.prepend(gridElement);
     cardFormToggle();
 }

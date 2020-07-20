@@ -9,6 +9,8 @@
     padding: 34px 36px 36.51px;
     color: black;
 }
+
+
 @media only screen and (max-width: 500px) {
     .edit-form__form {
         max-width: 200px;
