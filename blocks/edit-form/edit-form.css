@@ -8,7 +8,7 @@
 @import url('__heading/edit-form__heading_zoom.css');
 
 .edit-form {
-    /* display: none; */
+    display: flex;
     width: 100%;
     height: 100%;
     background-color: #1f1f1a80;
@@ -18,6 +18,7 @@
     align-items: center;
     justify-content: center;
     visibility: hidden;
-    opacity: .7;
-    transition: visibility 0s, opacity 0.5s ease;
+    opacity: .5;
+    transition: visibility .3s, opacity .3s ease-in-out;
+    
 }

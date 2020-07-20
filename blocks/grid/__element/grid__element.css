@@ -7,4 +7,5 @@
     justify-self: center;
     overflow: hidden;
     position: relative;
+    box-sizing: border-box;
 }

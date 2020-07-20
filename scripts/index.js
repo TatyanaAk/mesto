@@ -112,19 +112,21 @@ for (let i = 0; i < initialCards.length; i += 1) {
 }
 function addCard(event) {
     event.preventDefault();
-    const gridElement = gridTemplate.cloneNode(true);
-    gridElement.querySelector('.grid__grid-image').src = inputLink.value;
-    gridElement.querySelector('.grid__grid-image').alt = inputTitle.value;
-    gridElement.querySelector('.grid__title').textContent = inputTitle.value;
-    gridElement.querySelector('.grid__heart').addEventListener('click', function (evt) {
-        evt.target.classList.toggle('grid__heart_active');
-    });
-    const deleteButton = gridElement.querySelector('.grid__basket');
-    deleteButton.addEventListener('click', function () {
-        const listItem = deleteButton.closest('.grid__element');
-        listItem.remove();
-    });
-    gridElement.querySelector('.grid__grid-image').addEventListener('click', editFormZoom);
-    gridMenu.prepend(gridElement);
+    if (inputLink.value !== '') {
+        const gridElement = gridTemplate.cloneNode(true);
+        gridElement.querySelector('.grid__grid-image').src = inputLink.value;
+        gridElement.querySelector('.grid__grid-image').alt = inputTitle.value;
+        gridElement.querySelector('.grid__title').textContent = inputTitle.value;
+        gridElement.querySelector('.grid__heart').addEventListener('click', function (evt) {
+            evt.target.classList.toggle('grid__heart_active');
+        });
+        const deleteButton = gridElement.querySelector('.grid__basket');
+        deleteButton.addEventListener('click', function () {
+            const listItem = deleteButton.closest('.grid__element');
+            listItem.remove();
+        });
+        gridElement.querySelector('.grid__grid-image').addEventListener('click', editFormZoom);
+        gridMenu.prepend(gridElement);
+    }
     cardFormToggle();
 }
