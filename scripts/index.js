@@ -34,7 +34,7 @@ let cardZoom = document.querySelector('.edit-form_card-zoom');
 const closeEditForm = editForm.querySelector('.edit-form__close-icon');
 const closeAddCard = cardForm.querySelector('.edit-form__close-icon');
 const closeImage = cardZoom.querySelector('.edit-form__close-icon');
-let form = editForm.querySelector('.edit-form__form');
+const form = editForm.querySelector('.edit-form__form');
 let name = profileInfo.querySelector('.profile__name');
 let memo = profileInfo.querySelector('.profile__memo');
 let inputName = form.querySelector('.edit-form__item_name');
@@ -43,34 +43,24 @@ let inputTitle = cardForm.querySelector('.edit-form__item_title');
 let inputLink = cardForm.querySelector('.edit-form__item_link');
 
 
-function editFormToggle() {
-    editForm.classList.toggle('edit-form_open');
+function formToggle(modalWindow) {
+    modalWindow.classList.toggle('edit-form_open');
     if (editForm.classList.contains('edit-form_open')) {
         inputName.value = name.textContent;
         inputMemo.value = memo.textContent;
     }
-    
-}
-function cardFormToggle() {
-    cardForm.classList.toggle('edit-form_open');
     if (!cardForm.classList.contains('edit-form_open')) {
         inputTitle.value = '';
         inputLink.value = '';
     }
 }
-function cardZoomToggle() {
-    cardZoom.classList.toggle('edit-form_open');
-}
 
 function editFormZoom(element) {
     cardZoom.classList.toggle('edit-form_open');
     if (cardZoom.classList.contains('edit-form_open')) {
-        cardZoom.querySelector('.edit-form__image-zoom').src = 
-            element.currentTarget.src;
-        cardZoom.querySelector('.edit-form__image-zoom').alt = 
-            element.currentTarget.alt;
+        cardZoom.querySelector('.edit-form__image-zoom').src = element.currentTarget.src;
+        cardZoom.querySelector('.edit-form__image-zoom').alt = element.currentTarget.alt;
         cardZoom.querySelector('.edit-form__heading_zoom').textContent = element.currentTarget.alt;
-
     }
     
 }
@@ -78,13 +68,23 @@ function saveProfile(event) {
     event.preventDefault();
     name.textContent = inputName.value;
     memo.textContent = inputMemo.value;
-    editFormToggle();
+    formToggle(editForm);
 }
-openEditButton.addEventListener('click', editFormToggle);
-closeEditForm.addEventListener('click', editFormToggle);
-openAddCard.addEventListener('click', cardFormToggle);
-closeAddCard.addEventListener('click', cardFormToggle);
-closeImage.addEventListener('click', cardZoomToggle);
+openEditButton.addEventListener('click', () => {
+    formToggle(editForm);
+});
+closeEditForm.addEventListener('click', () => {
+    formToggle(editForm);
+});
+openAddCard.addEventListener('click', () => {
+    formToggle(cardForm);
+});
+closeAddCard.addEventListener('click', () => {
+    formToggle(cardForm);
+});
+closeImage.addEventListener('click', () => {
+    formToggle(cardZoom);
+});
 
 form.addEventListener('submit',saveProfile);
 
@@ -92,7 +92,7 @@ cardForm.querySelector('.edit-form__form').addEventListener('submit',addCard);
 
 
 const gridTemplate = document.querySelector('#card').content;
-const gridMenu = document.querySelector('.grid__menu');
+const gridCards = document.querySelector('.grid__cards');
 for (let i = 0; i < initialCards.length; i += 1) {
     // каждый раз создавать новый клон элемента
     const gridElement = gridTemplate.cloneNode(true);
@@ -108,7 +108,7 @@ for (let i = 0; i < initialCards.length; i += 1) {
         listItem.remove();
     });
     gridElement.querySelector('.grid__grid-image').addEventListener('click', editFormZoom);
-    gridMenu.append(gridElement);
+    gridCards.append(gridElement);
 }
 function addCard(event) {
     event.preventDefault();
@@ -126,7 +126,7 @@ function addCard(event) {
             listItem.remove();
         });
         gridElement.querySelector('.grid__grid-image').addEventListener('click', editFormZoom);
-        gridMenu.prepend(gridElement);
+        gridCards.prepend(gridElement);
     }
-    cardFormToggle();
+    formToggle(cardForm);
 }

@@ -1,4 +1,4 @@
-.grid__menu {
+.grid__cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
     grid-gap: 18px;
@@ -6,7 +6,7 @@
     margin: 0 auto;   
 }
 @media only screen and (max-width: 901px) {
-    .grid__menu {
+    .grid__cards {
         grid-gap: 20px;
    }
   }

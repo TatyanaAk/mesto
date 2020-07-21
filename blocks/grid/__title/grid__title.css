@@ -1,10 +1,10 @@
 .grid__title {
     font-style: normal;
     font-weight: 900;
-    font-size: 24px;
+    font-size: 1.5em;
     line-height: 1.2;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    margin: 25px 15px 31px 21px;
+    margin: 24px 15px 29px 21px;
 }
