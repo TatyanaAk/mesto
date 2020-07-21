@@ -3,4 +3,6 @@
     max-width: 75vw;
     max-height: 75vh;
     margin-top: 80px;
+    background: none;
+    border-radius: unset;
 }
