@@ -60,12 +60,12 @@ function formToggle(modalWindow) {
     }
 }
 
-function editFormZoom(element) {
+function editFormZoom(event) {
     cardZoom.classList.toggle('edit-form_open');
     if (cardZoom.classList.contains('edit-form_open')) {
-        cardZoom.querySelector('.edit-form__image-zoom').src = element.currentTarget.src;
-        cardZoom.querySelector('.edit-form__image-zoom').alt = element.currentTarget.alt;
-        cardZoom.querySelector('.edit-form__heading_zoom').textContent = element.currentTarget.alt;
+        cardZoom.querySelector('.edit-form__image-zoom').src = event.currentTarget.src;
+        cardZoom.querySelector('.edit-form__image-zoom').alt = event.currentTarget.alt;
+        cardZoom.querySelector('.edit-form__heading_zoom').textContent = event.currentTarget.alt;
     }
     
 }
