@@ -59,13 +59,13 @@ function formToggle(modalWindow) {
         inputLink.value = '';
     }
 }
-
-function editFormZoom(event) {
+// editFormZoom - принимает значения {src: src, alt: alt, title: title}
+function editFormZoom(data) {
     cardZoom.classList.toggle('edit-form_open');
     if (cardZoom.classList.contains('edit-form_open')) {
-        cardZoom.querySelector('.edit-form__image-zoom').src = event.currentTarget.src;
-        cardZoom.querySelector('.edit-form__image-zoom').alt = event.currentTarget.alt;
-        cardZoom.querySelector('.edit-form__heading_zoom').textContent = event.currentTarget.alt;
+        cardZoom.querySelector('.edit-form__image-zoom').src = data.src;
+        cardZoom.querySelector('.edit-form__image-zoom').alt = data.alt;
+        cardZoom.querySelector('.edit-form__heading_zoom').textContent = data.title;
     }
     
 }
@@ -78,10 +78,13 @@ function saveProfile(event) {
 // renderCard - рисует карточку.
 function renderCard(data) {
     const gridElement = gridTemplate.cloneNode(true);
-    gridElement.querySelector('.grid__grid-image').src = data.link;
-    gridElement.querySelector('.grid__grid-image').alt = data.name;
-    gridElement.querySelector('.grid__title').textContent = data.name;
-    gridElement.querySelector('.grid__heart').addEventListener('click', function (evt) {
+    let image = gridElement.querySelector('.grid__grid-image');
+    let title = gridElement.querySelector('.grid__title');
+    const heart = gridElement.querySelector('.grid__heart');
+    image.src = data.link;
+    image.alt = data.name;
+    title.textContent = data.name;
+    heart.addEventListener('click', function (evt) {
         evt.target.classList.toggle('grid__heart_active');
     });
     const deleteButton = gridElement.querySelector('.grid__basket');
@@ -89,7 +92,10 @@ function renderCard(data) {
         const listItem = deleteButton.closest('.grid__element');
         listItem.remove();
     });
-    gridElement.querySelector('.grid__grid-image').addEventListener('click', editFormZoom);
+    element = gridElement.querySelector('.grid__grid-image')
+    gridElement.querySelector('.grid__grid-image').addEventListener('click', (event) => {
+        editFormZoom({src: image.src, alt: image.alt, title: title.textContent});
+    });
     gridCards.prepend(gridElement);
 }
 // addCard - добавляет карточку в grid__cards
