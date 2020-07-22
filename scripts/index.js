@@ -93,11 +93,8 @@ function renderCard(data) {
     gridCards.prepend(gridElement);
 }
 // addCard - добавляет карточку в grid__cards
-function addCard(event) {
-    event.preventDefault();
-    if (inputLink.value !== '') {    
-        renderCard({name: inputTitle.value, link: inputLink.value });
-    }
+function addCard(data) {  
+    renderCard(data);
     formToggle(cardForm);
 }
 //устновка обработчика событий на кнопки.
@@ -117,7 +114,10 @@ closeImage.addEventListener('click', () => {
     formToggle(cardZoom);
 });
 form.addEventListener('submit',saveProfile);
-cardForm.querySelector('.edit-form__form').addEventListener('submit',addCard);
+cardForm.querySelector('.edit-form__form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    addCard({name: inputTitle.value, link: inputLink.value })
+});
 //создание карточек по умолчанию.
 for (let i = 0; i < initialCards.length; i += 1) {
     renderCard(initialCards[i]);
