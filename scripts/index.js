@@ -50,14 +50,6 @@ const gridCards = document.querySelector('.grid__cards');
 
 function formToggle(modalWindow) {
     modalWindow.classList.toggle('edit-form_open');
-    if (editForm.classList.contains('edit-form_open')) {
-        inputName.value = name.textContent;
-        inputMemo.value = memo.textContent;
-    }
-    if (!cardForm.classList.contains('edit-form_open')) {
-        inputTitle.value = '';
-        inputLink.value = '';
-    }
 }
 // editFormZoom - принимает значения {src: src, alt: alt, title: title}
 function editFormZoom(data) {
@@ -68,14 +60,30 @@ function editFormZoom(data) {
         image.src = data.src;
         image.alt = data.alt;
         title.textContent = data.title;
-    }
-    
+    }   
 }
+function editProfileFill() {
+    if (editForm.classList.contains('edit-form_open')) {
+        inputName.value = name.textContent;
+        inputMemo.value = memo.textContent;
+    }
+}
+function cardFormInit() {
+    if (!cardForm.classList.contains('edit-form_open')) {
+        inputTitle.value = '';
+        inputLink.value = '';
+    }
+}
+
 function saveProfile(event) {
     event.preventDefault();
     name.textContent = inputName.value;
     memo.textContent = inputMemo.value;
     formToggle(editForm);
+    editProfileFill();
+}
+function showCard(gridElement) {
+    gridCards.prepend(gridElement);
 }
 // renderCard - рисует карточку.
 function renderCard(data) {
@@ -94,20 +102,20 @@ function renderCard(data) {
         const listItem = deleteButton.closest('.grid__element');
         listItem.remove();
     });
-    element = gridElement.querySelector('.grid__grid-image')
-    gridElement.querySelector('.grid__grid-image').addEventListener('click', (event) => {
+    
+    image.addEventListener('click', (event) => {
         editFormZoom({src: image.src, alt: image.alt, title: title.textContent});
     });
-    gridCards.prepend(gridElement);
+    return gridElement;
 }
-// addCard - добавляет карточку в grid__cards
+
 function addCard(data) {  
-    renderCard(data);
-    formToggle(cardForm);
+    showCard(renderCard(data));
 }
 //устновка обработчика событий на кнопки.
 openEditButton.addEventListener('click', () => {
     formToggle(editForm);
+    editProfileFill();
 });
 closeEditForm.addEventListener('click', () => {
     formToggle(editForm);
@@ -117,6 +125,7 @@ openAddCard.addEventListener('click', () => {
 });
 closeAddCard.addEventListener('click', () => {
     formToggle(cardForm);
+    cardFormInit();
 });
 closeImage.addEventListener('click', () => {
     formToggle(cardZoom);
@@ -124,10 +133,13 @@ closeImage.addEventListener('click', () => {
 form.addEventListener('submit',saveProfile);
 cardForm.querySelector('.edit-form__form').addEventListener('submit', (event) => {
     event.preventDefault();
-    addCard({name: inputTitle.value, link: inputLink.value })
+    addCard({name: inputTitle.value, link: inputLink.value });
+    formToggle(cardForm);
+    cardFormInit();
 });
 //создание карточек по умолчанию.
 for (let i = 0; i < initialCards.length; i += 1) {
-    renderCard(initialCards[i]);
+    const card = renderCard(initialCards[i]);
+    showCard(card);
 }
 
