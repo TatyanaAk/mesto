@@ -27,23 +27,23 @@ const initialCards = [
 
 const openEditButton = document.querySelector('.profile__edit-button');
 const openAddCard = document.querySelector('.profile__add-button');
-let profileInfo = document.querySelector('.profile__profile-info');
-let editForm = document.querySelector('.edit-form_profile');
-let cardForm = document.querySelector('.edit-form_card');
-let cardZoom = document.querySelector('.edit-form_card-zoom');
+const profileInfo = document.querySelector('.profile__profile-info');
+const editForm = document.querySelector('.edit-form_profile');
+const cardForm = document.querySelector('.edit-form_card');
+const cardZoom = document.querySelector('.edit-form_card-zoom');
 // кнопки закрытия модалок
 const closeEditForm = editForm.querySelector('.edit-form__close-icon');
 const closeAddCard = cardForm.querySelector('.edit-form__close-icon');
 const closeImage = cardZoom.querySelector('.edit-form__close-icon');
 // элементы профиля
 const form = editForm.querySelector('.edit-form__form');
-let name = profileInfo.querySelector('.profile__name');
-let memo = profileInfo.querySelector('.profile__memo');
-let inputName = form.querySelector('.edit-form__item_name');
-let inputMemo = form.querySelector('.edit-form__item_memo');
+const name = profileInfo.querySelector('.profile__name');
+const memo = profileInfo.querySelector('.profile__memo');
+const inputName = form.querySelector('.edit-form__item_name');
+const inputMemo = form.querySelector('.edit-form__item_memo');
 // элементы модалки создания карточки
-let inputTitle = cardForm.querySelector('.edit-form__item_title');
-let inputLink = cardForm.querySelector('.edit-form__item_link');
+const inputTitle = cardForm.querySelector('.edit-form__item_title');
+const inputLink = cardForm.querySelector('.edit-form__item_link');
 const gridTemplate = document.querySelector('#card').content;
 const gridCards = document.querySelector('.grid__cards');
 
@@ -61,11 +61,13 @@ function formToggle(modalWindow) {
 }
 // editFormZoom - принимает значения {src: src, alt: alt, title: title}
 function editFormZoom(data) {
+    const image = cardZoom.querySelector('.edit-form__image-zoom');
+    const title = cardZoom.querySelector('.edit-form__heading_zoom');
     cardZoom.classList.toggle('edit-form_open');
     if (cardZoom.classList.contains('edit-form_open')) {
-        cardZoom.querySelector('.edit-form__image-zoom').src = data.src;
-        cardZoom.querySelector('.edit-form__image-zoom').alt = data.alt;
-        cardZoom.querySelector('.edit-form__heading_zoom').textContent = data.title;
+        image.src = data.src;
+        image.alt = data.alt;
+        title.textContent = data.title;
     }
     
 }
@@ -78,8 +80,8 @@ function saveProfile(event) {
 // renderCard - рисует карточку.
 function renderCard(data) {
     const gridElement = gridTemplate.cloneNode(true);
-    let image = gridElement.querySelector('.grid__grid-image');
-    let title = gridElement.querySelector('.grid__title');
+    const image = gridElement.querySelector('.grid__grid-image');
+    const title = gridElement.querySelector('.grid__title');
     const heart = gridElement.querySelector('.grid__heart');
     image.src = data.link;
     image.alt = data.name;
