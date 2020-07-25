@@ -56,7 +56,7 @@ function formToggle(modalWindow) {
 function editFormZoom(data) {
     const image = cardZoom.querySelector('.edit-form__image-zoom');
     const title = cardZoom.querySelector('.edit-form__heading_zoom');
-    cardZoom.classList.toggle('edit-form_open');
+    formToggle(cardZoom);
     if (cardZoom.classList.contains('edit-form_open')) {
         image.src = data.src;
         image.alt = data.alt;
