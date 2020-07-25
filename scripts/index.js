@@ -144,7 +144,7 @@ cardCreateBt.addEventListener('submit', (event) => {
 });
 //создание карточек по умолчанию.
 // значение переменной i меняется напрямую ,применение const означает что i всегда будет равна 0
-// щётчик в циклах всегда переменная
+// счётчик в циклах всегда переменная
 for (let i = 0; i < initialCards.length; i += 1) {
     const card = renderCard(initialCards[i]);
     showCard(card);
