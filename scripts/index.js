@@ -42,6 +42,7 @@ const memo = profileInfo.querySelector('.profile__memo');
 const inputName = form.querySelector('.edit-form__item_name');
 const inputMemo = form.querySelector('.edit-form__item_memo');
 // элементы модалки создания карточки
+const cardCreateBt = cardForm.querySelector('.edit-form__form');
 const inputTitle = cardForm.querySelector('.edit-form__item_title');
 const inputLink = cardForm.querySelector('.edit-form__item_link');
 const gridTemplate = document.querySelector('#card').content;
@@ -131,14 +132,19 @@ closeAddCard.addEventListener('click', () => {
 closeImage.addEventListener('click', () => {
     formToggle(cardZoom);
 });
+// устанавливаю обработчик для заполнения формы профиля
 form.addEventListener('submit',saveProfile);
-cardForm.querySelector('.edit-form__form').addEventListener('submit', (event) => {
+
+// устанавливаю обработчик для создания карточек
+cardCreateBt.addEventListener('submit', (event) => {
     event.preventDefault();
     addCard({name: inputTitle.value, link: inputLink.value });
     formToggle(cardForm);
     cardFormInit();
 });
 //создание карточек по умолчанию.
+// значение переменной i меняется напрямую ,применение const означает что i всегда будет равна 0
+// щётчик в циклах всегда переменная
 for (let i = 0; i < initialCards.length; i += 1) {
     const card = renderCard(initialCards[i]);
     showCard(card);
