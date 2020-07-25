@@ -82,8 +82,8 @@ function saveProfile(event) {
     formToggle(editForm);
     editProfileFill();
 }
-function showCard(gridElement) {
-    gridCards.prepend(gridElement);
+function showCard(card) {
+    gridCards.prepend(card);
 }
 // renderCard - рисует карточку.
 function renderCard(data) {
@@ -110,7 +110,8 @@ function renderCard(data) {
 }
 
 function addCard(data) {  
-    showCard(renderCard(data));
+    const card = renderCard(data);
+    showCard(card);
 }
 //устновка обработчика событий на кнопки.
 openEditButton.addEventListener('click', () => {
