@@ -52,8 +52,8 @@ const gridCards = document.querySelector('.grid__cards');
 function formToggle(modalWindow) {
     modalWindow.classList.toggle('edit-form_open');
 }
-// editFormZoom - принимает значения {src: src, alt: alt, title: title}
-function editFormZoom(data) {
+// imageZoom - принимает значения {src: src, alt: alt, title: title}
+function imageZoom(data) {
     const image = cardZoom.querySelector('.edit-form__image-zoom');
     const title = cardZoom.querySelector('.edit-form__heading_zoom');
     formToggle(cardZoom);
@@ -105,7 +105,7 @@ function renderCard(data) {
     });
     
     image.addEventListener('click', (event) => {
-        editFormZoom({src: image.src, alt: image.alt, title: title.textContent});
+        imageZoom({src: image.src, alt: image.alt, title: title.textContent});
     });
     return gridElement;
 }
