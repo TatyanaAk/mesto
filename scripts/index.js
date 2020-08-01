@@ -31,10 +31,6 @@ const profileInfo = document.querySelector('.profile__profile-info');
 const editForm = document.querySelector('.edit-form_profile');
 const cardForm = document.querySelector('.edit-form_card');
 const cardZoom = document.querySelector('.edit-form_card-zoom');
-// кнопки закрытия модалок
-const closeEditForm = editForm.querySelector('.edit-form__close-icon');
-const closeAddCard = cardForm.querySelector('.edit-form__close-icon');
-const closeImage = cardZoom.querySelector('.edit-form__close-icon');
 // элементы профиля
 const form = editForm.querySelector('.edit-form__form');
 const name = profileInfo.querySelector('.profile__name');
@@ -51,6 +47,12 @@ const gridCards = document.querySelector('.grid__cards');
 
 function formToggle(modalWindow) {
     modalWindow.classList.toggle('edit-form_open');
+}
+function formClose(target,modalWindow) {
+    if (target.classList.contains('edit-form')
+            ||target.classList.contains('edit-form__close-icon')){
+        modalWindow.classList.remove('edit-form_open');
+    }
 }
 // imageZoom - принимает значения {src: src, alt: alt, title: title}
 function imageZoom(data) {
@@ -119,18 +121,18 @@ openEditButton.addEventListener('click', () => {
     formToggle(editForm);
     editProfileFill();
 });
-closeEditForm.addEventListener('click', () => {
-    formToggle(editForm);
+editForm.addEventListener('click', (evt) => {
+    formClose(evt.target,editForm);
 });
 openAddCard.addEventListener('click', () => {
     formToggle(cardForm);
 });
-closeAddCard.addEventListener('click', () => {
-    formToggle(cardForm);
+cardForm.addEventListener('click', (evt) => {
+    formClose(evt.target,cardForm);
     cardFormInit();
 });
-closeImage.addEventListener('click', () => {
-    formToggle(cardZoom);
+cardZoom.addEventListener('click', (evt) => {
+    formClose(evt.target,cardZoom);
 });
 // устанавливаю обработчик для заполнения формы профиля
 form.addEventListener('submit',saveProfile);
