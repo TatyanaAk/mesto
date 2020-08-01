@@ -31,6 +31,7 @@ const profileInfo = document.querySelector('.profile__profile-info');
 const editForm = document.querySelector('.edit-form_profile');
 const cardForm = document.querySelector('.edit-form_card');
 const cardZoom = document.querySelector('.edit-form_card-zoom');
+const modals = document.querySelectorAll('.edit-form');
 // элементы профиля
 const form = editForm.querySelector('.edit-form__form');
 const name = profileInfo.querySelector('.profile__name');
@@ -124,6 +125,13 @@ openEditButton.addEventListener('click', () => {
 editForm.addEventListener('click', (evt) => {
     formClose(evt.target,editForm);
 });
+// фокус, после открытия модалки находится на кнопке открытия модалки
+// openEditButton.addEventListener('keydown', (evt) => {
+//     // console.log(evt);
+//     if (evt.key === 'Escape') {
+//         editForm.classList.remove('edit-form_open');
+//     }
+// });
 openAddCard.addEventListener('click', () => {
     formToggle(cardForm);
 });
@@ -152,3 +160,16 @@ for (let i = 0; i < initialCards.length; i += 1) {
     showCard(card);
 }
 
+// закрытие модалок устанавливаем на весь документ
+document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+        for (let i = 0; i < modals.length; i += 1) {
+            if (modals[i].classList.contains('edit-form_open')) {
+                formToggle(modals[i]);
+                if (modals[i].classList.contains('edit-form_card')) {
+                    cardFormInit();
+                }
+            }
+        }
+    }
+});
