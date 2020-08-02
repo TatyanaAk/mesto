@@ -72,6 +72,16 @@ const setEventListeners = (formSelector) => {
       });
     });
   };
+
+const checkForm = (formSelector) => {
+    // Находим все поля внутри формы,
+    // сделаем из них массив методом Array.from
+    const inputList = Array.from(formSelector.querySelectorAll('.edit-form__item'));
+    const buttonElement = formSelector.querySelector('.edit-form__button');
+    if (buttonElement !== null ) {
+        toggleButtonState(inputList, buttonElement);
+    }
+};
 const enableValidation = () => {
     // делаем массив для форм с классом .edit-form
     const formList = Array.from(document.querySelectorAll('.edit-form'));
@@ -87,5 +97,11 @@ const enableValidation = () => {
   
 enableValidation();
 
+openAddCard.addEventListener('click', () => {
+    checkForm(cardForm);
+});
+openEditButton.addEventListener('click', () => {
+    checkForm(editForm);
+});
   
   

@@ -42,6 +42,7 @@ const inputMemo = form.querySelector('.edit-form__item_memo');
 const cardCreateBt = cardForm.querySelector('.edit-form__form');
 const inputTitle = cardForm.querySelector('.edit-form__item_title');
 const inputLink = cardForm.querySelector('.edit-form__item_link');
+const cardFormErrors = cardForm.querySelectorAll('.edit-form__error');
 const gridTemplate = document.querySelector('#card').content;
 const gridCards = document.querySelector('.grid__cards');
 
@@ -53,6 +54,10 @@ function formClose(target,modalWindow) {
     if (target.classList.contains('edit-form')
             ||target.classList.contains('edit-form__close-icon')){
         modalWindow.classList.remove('edit-form_open');
+        const inputs = modalWindow.querySelectorAll('.edit-form__item');
+        for (let i=0; i<inputs.length;i++){
+            inputs[i].classList.remove('edit-form__item_type_error');
+        }
     }
 }
 // imageZoom - принимаем значения {src: src, alt: alt, title: title}
@@ -76,6 +81,12 @@ function cardFormInit() {
     if (!cardForm.classList.contains('edit-form_open')) {
         inputTitle.value = '';
         inputLink.value = '';
+        inputTitle.classList.remove('edit-form__item_type_error');
+        inputLink.classList.remove('edit-form__item_type_error');
+        for (let i = 0; i < cardFormErrors.length; i++) {
+            cardFormErrors[i].textContent = '';
+        }
+
     }
 }
 
