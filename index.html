@@ -34,20 +34,25 @@
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
     <div class="edit-form edit-form_profile">
-        <form action="#" name="profile-edit" class="edit-form__form">
+        <form action="#" name="profile-edit" class="edit-form__form" novalidate>
             <button type="button" class="edit-form__close-icon"></button>
             <h2 class="edit-form__heading">Редактировать профиль</h2>
-            <input type="text" name="name" class="edit-form__item edit-form__item_name">
-            <input type="text" name="memo" class="edit-form__item edit-form__item_memo">
+            <input id="text-input" type="text" name="name" class="edit-form__item edit-form__item_name" minlength="2" maxlength="40" required>
+            <span  id="text-input-error" class="edit-form__error"></span>
+            <input id="text-input" type="text" name="memo" class="edit-form__item edit-form__item_memo" minlength="2" maxlength="200" required>
+            <span  id="text-input-error" class="edit-form__error"></span>
             <button type="submit" class="edit-form__button">Сохранить</button>
         </form>
     </div>
     <div class="edit-form edit-form_card">
-        <form action="#" name="card-edit" class="edit-form__form">
+        <form action="#" name="card-edit" class="edit-form__form" novalidate>
             <button type="button" class="edit-form__close-icon"></button>
             <h2 class="edit-form__heading">Новое место</h2>
-            <input type="text" name="title" class="edit-form__item edit-form__item_title" placeholder="Название">
-            <input type="text" name="link" class="edit-form__item edit-form__item_link" placeholder="Ссылка на картинку">
+            <input id="text-input"  type="text" name="title" class="edit-form__item edit-form__item_title" placeholder="Название"
+             minlength="1" maxlength="30" required>
+             <span  id="text-input-error" class="edit-form__error"></span>
+            <input id="url-input" type="url" name="link" class="edit-form__item edit-form__item_link" placeholder="Ссылка на картинку" required>
+            <span  id="url-input-error" class="edit-form__error"></span>
             <button type="submit" class="edit-form__button">Создать</button>
         </form>
     </div>
@@ -71,5 +76,6 @@
         </li>
     </template>
     <script src="scripts/index.js"></script>
+    <script src="scripts/validate.js"></script>
   </body>
 </html>

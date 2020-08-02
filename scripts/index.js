@@ -55,7 +55,7 @@ function formClose(target,modalWindow) {
         modalWindow.classList.remove('edit-form_open');
     }
 }
-// imageZoom - принимает значения {src: src, alt: alt, title: title}
+// imageZoom - принимаем значения {src: src, alt: alt, title: title}
 function imageZoom(data) {
     const image = cardZoom.querySelector('.edit-form__image-zoom');
     const title = cardZoom.querySelector('.edit-form__heading_zoom');
@@ -89,7 +89,7 @@ function saveProfile(event) {
 function showCard(card) {
     gridCards.prepend(card);
 }
-// renderCard - рисует карточку.
+// renderCard - рисуем карточку.
 function renderCard(data) {
     const gridElement = gridTemplate.cloneNode(true);
     const image = gridElement.querySelector('.grid__grid-image');
@@ -117,7 +117,7 @@ function addCard(data) {
     const card = renderCard(data);
     showCard(card);
 }
-//устновка обработчика событий на кнопки.
+//устанавливаем обработчик событий на кнопки.
 openEditButton.addEventListener('click', () => {
     formToggle(editForm);
     editProfileFill();
@@ -125,13 +125,7 @@ openEditButton.addEventListener('click', () => {
 editForm.addEventListener('click', (evt) => {
     formClose(evt.target,editForm);
 });
-// фокус, после открытия модалки находится на кнопке открытия модалки
-// openEditButton.addEventListener('keydown', (evt) => {
-//     // console.log(evt);
-//     if (evt.key === 'Escape') {
-//         editForm.classList.remove('edit-form_open');
-//     }
-// });
+
 openAddCard.addEventListener('click', () => {
     formToggle(cardForm);
 });

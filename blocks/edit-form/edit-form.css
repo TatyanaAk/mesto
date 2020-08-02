@@ -6,6 +6,11 @@
 @import url('__image-zoom/edit-form__image-zoom.css');
 @import url('__form/edit-form__form_zoom.css');
 @import url('__heading/edit-form__heading_zoom.css');
+@import url('__error/edit-form__error.css');
+@import url('__item/edit-form__item_type_error.css');
+@import url('__button/edit-form__button_inactive.css');
+
+
 
 .edit-form {
     display: flex;
