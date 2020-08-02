@@ -9,7 +9,6 @@
 
 
 //пишем сообщение об ошибке под полем ввода
-
 const showInputError = (formSelector, inputSelector, errorMessage) => {
     const formError = formSelector.querySelector(`#${inputSelector.id}-error`);
     inputSelector.classList.add('edit-form__item_type_error');
@@ -36,9 +35,9 @@ const isValid = (formSelector,inputSelector) => {
 const hasInvalidInput = (inputList) => {
     // проходим по этому массиву методом some
     return inputList.some((inputSelector) => {
-          // Если поле не валидно, колбэк вернёт true
-      // Обход массива прекратится и вся фунцкция
-      // hasInvalidInput вернёт true
+        // Если поле не валидно, колбэк вернёт true
+        // Обход массива прекратится и вся фунцкция
+        // hasInvalidInput вернёт true
   
       return !inputSelector.validity.valid;
     })
@@ -55,7 +54,7 @@ const toggleButtonState = (inputList, buttonElement) => {
       buttonElement.disabled = false;
     }
   };
-  const setEventListeners = (formSelector) => {
+const setEventListeners = (formSelector) => {
     // Находим все поля внутри формы,
     // сделаем из них массив методом Array.from
     const inputList = Array.from(formSelector.querySelectorAll('.edit-form__item'));
@@ -64,34 +63,29 @@ const toggleButtonState = (inputList, buttonElement) => {
         toggleButtonState(inputList, buttonElement);
     }
 
-    // Обойдём все элементы полученной коллекции
+    // обходим все элементы внутри формы и навешиваем на них обработчик событий
     inputList.forEach((inputSelector) => {
-      // каждому полю добавим обработчик события input
       inputSelector.addEventListener('input', () => {
-        // Внутри колбэка вызовем isValid,
-        // передав ей форму и проверяемый элемент
+        // Внутри колбэка вызовем isValid, что бы показать сообщения об ошибках
         isValid(formSelector, inputSelector);
         toggleButtonState(inputList, buttonElement);
       });
     });
   };
-  const enableValidation = () => {
-    // Найдём все формы с указанным классом в DOM,
-    // сделаем из них массив методом Array.from
+const enableValidation = () => {
+    // делаем массив для форм с классом .edit-form
     const formList = Array.from(document.querySelectorAll('.edit-form'));
   
     // Переберём полученную коллекцию
     formList.forEach((formSelector) => {
         formSelector.addEventListener('submit', (evt) => {
-        // У каждой формы отменим стандартное поведение
         evt.preventDefault();
       });
           setEventListeners(formSelector);
     });
   };
   
-  // Вызовем функцию
-  enableValidation();
+enableValidation();
 
   
   
