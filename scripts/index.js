@@ -58,6 +58,11 @@ function formClose(target,modalWindow) {
         for (let i=0; i<inputs.length;i++){
             inputs[i].classList.remove('edit-form__item_type_error');
         }
+        const errors = Array.from(modalWindow.querySelectorAll('.edit-form__error'));
+        for (let index = 0; index < errors.length; index++) {
+            errors[index].classList.remove('edit-form__error_visible');
+        
+        }
     }
 }
 // imageZoom - принимаем значения {src: src, alt: alt, title: title}
@@ -81,12 +86,6 @@ function cardFormInit() {
     if (!cardForm.classList.contains('edit-form_open')) {
         inputTitle.value = '';
         inputLink.value = '';
-        inputTitle.classList.remove('edit-form__item_type_error');
-        inputLink.classList.remove('edit-form__item_type_error');
-        for (let i = 0; i < cardFormErrors.length; i++) {
-            cardFormErrors[i].textContent = '';
-        }
-
     }
 }
 

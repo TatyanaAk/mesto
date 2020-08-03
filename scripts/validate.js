@@ -1,3 +1,11 @@
+const params = {
+    formSelector: '.edit-form',
+    inputSelector: '.edit-form__item',
+    submitButtonSelector: '.edit-form__button',
+    inactiveButtonClass: 'edit-form__button_inactive',
+    inputErrorClass: 'edit-form__item_type_error',
+    errorClass: 'edit-form__error_visible'
+  };
 //пишем сообщение об ошибке под полем ввода
 const showInputError = (formSelector, inputSelector, errorMessage,settings) => {
     const formError = formSelector.querySelector(`#${inputSelector.id}-error`);
@@ -92,22 +100,15 @@ const enableValidation = (settings) => {
     });
 };
 
-enableValidation({
-    formSelector: '.edit-form',
-    inputSelector: '.edit-form__item',
-    submitButtonSelector: '.edit-form__button',
-    inactiveButtonClass: 'edit-form__button_inactive',
-    inputErrorClass: 'edit-form__item_type_error',
-    errorClass: 'edit-form__error_visible'
-  });
+enableValidation(params);
 const openEditButtonValidate = document.querySelector('.profile__edit-button');
 const openAddCardValidate = document.querySelector('.profile__add-button');
 const cardFormValidate = document.querySelector('.edit-form_card');
 const editFormValidate = document.querySelector('.edit-form_profile');
 openAddCardValidate.addEventListener('click', () => {
-    newEmptyForm(cardFormValidate,{inputSelector: '.edit-form__item', submitButtonSelector: '.edit-form__button',inactiveButtonClass: 'edit-form__button_inactive'});
+    newEmptyForm(cardFormValidate,params);
 });
 openEditButtonValidate.addEventListener('click', () => {
-    newEmptyForm(editFormValidate,{inputSelector: '.edit-form__item', submitButtonSelector: '.edit-form__button',inactiveButtonClass: 'edit-form__button_inactive'});
+    newEmptyForm(editFormValidate,params);
 });
 
