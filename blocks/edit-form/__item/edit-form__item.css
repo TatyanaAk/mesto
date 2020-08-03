@@ -1,8 +1,8 @@
 .edit-form__item {
     display: flex;
     margin: 0;
-    padding-top: 28.08px;
-    margin-bottom: 15px;
+    padding-top: 25.08px;
+    margin-bottom: 18px;
     border-bottom: 1px solid #00000033;
     border-top-style: none;
     border-left-style: none;
@@ -20,7 +20,7 @@
 
 @media only screen and (max-width: 500px) {
     .edit-form__item {
-        padding-top: 29px;
+        padding-top: 11px;
         font-size: 12px;
    }
   } 

@@ -13,8 +13,8 @@
     animation: marquee 10s infinite linear;
 }
 @-webkit-keyframes marquee {
-    50%{-webkit-transform: translate(-50%, 0);}
+    50%{-webkit-transform: translate(-65%, 0);}
     }
 @keyframes marquee{
-    50%{transform: translate(-50%, 0)}
+    50%{transform: translate(-65%, 0)}
     }
