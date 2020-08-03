@@ -1,34 +1,25 @@
-// enableValidation({
-//     formSelector: '.edit-form__form',
-//     inputSelector: '.edit-form__item',
-//     submitButtonSelector: '.edit-form__button',
-//     inactiveButtonClass: 'edit-form__button_disabled',
-//     inputErrorClass: 'edit-form__item_type_error',
-//     errorClass: 'edit-form__error_visible'
-//   });
-
-
 //пишем сообщение об ошибке под полем ввода
-const showInputError = (formSelector, inputSelector, errorMessage) => {
+const showInputError = (formSelector, inputSelector, errorMessage,settings) => {
     const formError = formSelector.querySelector(`#${inputSelector.id}-error`);
-    inputSelector.classList.add('edit-form__item_type_error');
+    inputSelector.classList.add(settings.inputErrorClass);
     formError.textContent = errorMessage;
-    // formError.classList.add('form__input-error_active');
+    formError.classList.add(settings.errorClass);
   };
 
-const hideInputError = (formSelector, inputSelector) => {
+const hideInputError = (formSelector, inputSelector,settings) => {
     const formError = formSelector.querySelector(`#${inputSelector.id}-error`);
-    inputSelector.classList.remove('edit-form__item_type_error');
-    // formError.classList.remove('form__input-error_active');
+    inputSelector.classList.remove(settings.inputErrorClass);
+    formError.classList.remove(settings.errorClass);
     formError.textContent = '';
   };
-const isValid = (formSelector,inputSelector) => {
+const isValid = (formSelector,inputSelector,settings) => {
     if (!inputSelector.validity.valid) {
-      // Если поле не проходит валидацию, покажем ошибку
-      showInputError(formSelector,inputSelector, inputSelector.validationMessage);
+        // Если поле не проходит валидацию, покажем ошибку
+        // проверять valueMissing и tooShort, typeMismatch 
+      showInputError(formSelector,inputSelector, inputSelector.validationMessage,settings);
     } else {
       // Если проходит, скроем
-      hideInputError(formSelector,inputSelector);
+      hideInputError(formSelector,inputSelector,settings);
     }
   };
 
@@ -42,66 +33,81 @@ const hasInvalidInput = (inputList) => {
       return !inputSelector.validity.valid;
     })
   };
-const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = (inputList, buttonElement,settings) => {
     // Если есть хотя бы один невалидный инпут
     if (hasInvalidInput(inputList)) {
       // сделай кнопку неактивной
-      buttonElement.classList.add('edit-form__button_inactive');
+      buttonElement.classList.add(settings.inactiveButtonClass);
       buttonElement.disabled = true;
     } else {
           // иначе сделай кнопку активной
-      buttonElement.classList.remove('edit-form__button_inactive');
+      buttonElement.classList.remove(settings.inactiveButtonClass);
       buttonElement.disabled = false;
     }
   };
-const setEventListeners = (formSelector) => {
+const setEventListeners = (formSelector,settings) => {
     // Находим все поля внутри формы,
     // сделаем из них массив методом Array.from
-    const inputList = Array.from(formSelector.querySelectorAll('.edit-form__item'));
-    const buttonElement = formSelector.querySelector('.edit-form__button');
+    const inputList = Array.from(formSelector.querySelectorAll(settings.inputSelector));
+    const buttonElement = formSelector.querySelector(settings.submitButtonSelector);
     if (buttonElement !== null ) {
-        toggleButtonState(inputList, buttonElement);
+        toggleButtonState(inputList, buttonElement,settings);
     }
 
     // обходим все элементы внутри формы и навешиваем на них обработчик событий
     inputList.forEach((inputSelector) => {
       inputSelector.addEventListener('input', () => {
         // Внутри колбэка вызовем isValid, что бы показать сообщения об ошибках
-        isValid(formSelector, inputSelector);
-        toggleButtonState(inputList, buttonElement);
+        isValid(formSelector, inputSelector,settings);
+        toggleButtonState(inputList, buttonElement,settings);
       });
     });
-  };
-
-const checkForm = (formSelector) => {
+};
+//при открытии формы сбрасываем все ошибки для нее
+const newEmptyForm = (formSelector,settings) => {
     // Находим все поля внутри формы,
     // сделаем из них массив методом Array.from
-    const inputList = Array.from(formSelector.querySelectorAll('.edit-form__item'));
-    const buttonElement = formSelector.querySelector('.edit-form__button');
+    const inputList = Array.from(formSelector.querySelectorAll(settings.inputSelector));
+    const buttonElement = formSelector.querySelector(settings.submitButtonSelector);
     if (buttonElement !== null ) {
-        toggleButtonState(inputList, buttonElement);
+        toggleButtonState(inputList, buttonElement,settings);
+        
     }
+    // обходим все элементы внутри формы
+    inputList.forEach((inputSelector) => {
+        // скрываем сообщения об ошибках
+        hideInputError(formSelector,inputSelector,settings);  
+    });
 };
-const enableValidation = () => {
+const enableValidation = (settings) => {
     // делаем массив для форм с классом .edit-form
-    const formList = Array.from(document.querySelectorAll('.edit-form'));
+    const formList = Array.from(document.querySelectorAll(settings.formSelector));
   
     // Переберём полученную коллекцию
-    formList.forEach((formSelector) => {
-        formSelector.addEventListener('submit', (evt) => {
+    formList.forEach((form) => {
+        form.addEventListener('submit', (evt) => {
         evt.preventDefault();
       });
-          setEventListeners(formSelector);
+          setEventListeners(form,settings);
     });
-  };
-  
-enableValidation();
+};
 
-openAddCard.addEventListener('click', () => {
-    checkForm(cardForm);
+enableValidation({
+    formSelector: '.edit-form',
+    inputSelector: '.edit-form__item',
+    submitButtonSelector: '.edit-form__button',
+    inactiveButtonClass: 'edit-form__button_inactive',
+    inputErrorClass: 'edit-form__item_type_error',
+    errorClass: 'edit-form__error_visible'
+  });
+const openEditButtonValidate = document.querySelector('.profile__edit-button');
+const openAddCardValidate = document.querySelector('.profile__add-button');
+const cardFormValidate = document.querySelector('.edit-form_card');
+const editFormValidate = document.querySelector('.edit-form_profile');
+openAddCardValidate.addEventListener('click', () => {
+    newEmptyForm(cardFormValidate,{inputSelector: '.edit-form__item', submitButtonSelector: '.edit-form__button',inactiveButtonClass: 'edit-form__button_inactive'});
 });
-openEditButton.addEventListener('click', () => {
-    checkForm(editForm);
+openEditButtonValidate.addEventListener('click', () => {
+    newEmptyForm(editFormValidate,{inputSelector: '.edit-form__item', submitButtonSelector: '.edit-form__button',inactiveButtonClass: 'edit-form__button_inactive'});
 });
-  
-  
+

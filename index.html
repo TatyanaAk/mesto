@@ -37,10 +37,10 @@
         <form action="#" name="profile-edit" class="edit-form__form" novalidate>
             <button type="button" class="edit-form__close-icon"></button>
             <h2 class="edit-form__heading">Редактировать профиль</h2>
-            <input id="text-input" type="text" name="name" class="edit-form__item edit-form__item_name" minlength="2" maxlength="40" required>
-            <span  id="text-input-error" class="edit-form__error"></span>
-            <input id="text-input" type="text" name="memo" class="edit-form__item edit-form__item_memo" minlength="2" maxlength="200" required>
-            <span  id="text-input-error" class="edit-form__error"></span>
+            <input id="name-input" type="text" name="name" class="edit-form__item edit-form__item_name" minlength="2" maxlength="40" required>
+            <div class="edit-form__marquee"><span  id="name-input-error" class="edit-form__error"></span></div>
+            <input id="memo-input" type="text" name="memo" class="edit-form__item edit-form__item_memo" minlength="2" maxlength="200" required>
+            <div class="edit-form__marquee"><span  id="memo-input-error" class="edit-form__error"></span></div>
             <button type="submit" class="edit-form__button">Сохранить</button>
         </form>
     </div>
@@ -48,11 +48,11 @@
         <form action="#" name="card-edit" class="edit-form__form" novalidate>
             <button type="button" class="edit-form__close-icon"></button>
             <h2 class="edit-form__heading">Новое место</h2>
-            <input id="text-input"  type="text" name="title" class="edit-form__item edit-form__item_title" placeholder="Название"
+            <input id="title-input"  type="text" name="title" class="edit-form__item edit-form__item_title" placeholder="Название"
              minlength="1" maxlength="30" required>
-             <span  id="text-input-error" class="edit-form__error"></span>
+             <div class="edit-form__marquee"><span  id="title-input-error" class="edit-form__error"></span></div>
             <input id="url-input" type="url" name="link" class="edit-form__item edit-form__item_link" placeholder="Ссылка на картинку" required>
-            <span  id="url-input-error" class="edit-form__error"></span>
+            <div class="edit-form__marquee"><span  id="url-input-error" class="edit-form__error"></span></div>
             <button type="submit" class="edit-form__button">Создать</button>
         </form>
     </div>
