@@ -103,7 +103,7 @@ function saveProfile(event) {
     editProfileFill();
 }
 
-// createCard - рисуем карточку.
+// createCard - создаём карточку.
 function createCard(data) {
     const gridElement = gridTemplate.cloneNode(true);
     const image = gridElement.querySelector('.grid__grid-image');
