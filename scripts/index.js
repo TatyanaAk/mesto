@@ -54,15 +54,15 @@ function formClose(target,modalWindow) {
     if (target.classList.contains('edit-form')
             ||target.classList.contains('edit-form__close-icon')){
         modalWindow.classList.remove('edit-form_open');
-        const inputs = modalWindow.querySelectorAll('.edit-form__item');
-        for (let i=0; i<inputs.length;i++){
-            inputs[i].classList.remove('edit-form__item_type_error');
-        }
+        const inputs = Array.from(modalWindow.querySelectorAll('.edit-form__item'));
+        inputs.forEach( (input) => {
+            input.classList.remove('edit-form__item_type_error');
+        });
+       
         const errors = Array.from(modalWindow.querySelectorAll('.edit-form__error'));
-        for (let index = 0; index < errors.length; index++) {
-            errors[index].classList.remove('edit-form__error_visible');
-        
-        }
+        errors.forEach( (err) => {
+            err.classList.remove('edit-form__error_visible');
+        });    
     }
 }
 // imageZoom - принимаем значения {src: src, alt: alt, title: title}
@@ -157,23 +157,21 @@ cardCreateBt.addEventListener('submit', (event) => {
     cardFormInit();
 });
 //создание карточек по умолчанию.
-// значение переменной i меняется напрямую ,применение const означает что i всегда будет равна 0
-// счётчик в циклах всегда переменная
-for (let i = 0; i < initialCards.length; i += 1) {
-    const card = renderCard(initialCards[i]);
+initialCards.forEach((initialCard) => {
+    const card = renderCard(initialCard);
     showCard(card);
-}
+}); 
 
 // закрытие модалок устанавливаем на весь документ
 document.addEventListener('keydown', (evt) => {
     if (evt.key === 'Escape') {
-        for (let i = 0; i < modals.length; i += 1) {
-            if (modals[i].classList.contains('edit-form_open')) {
-                formToggle(modals[i]);
-                if (modals[i].classList.contains('edit-form_card')) {
+        modals.forEach( (modal) => {
+            if (modal.classList.contains('edit-form_open')) {
+                formToggle(modal);
+                if (modal.classList.contains('edit-form_card')) {
                     cardFormInit();
                 }
             }
-        }
+        });
     }
 });
