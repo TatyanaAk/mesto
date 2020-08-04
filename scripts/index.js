@@ -45,7 +45,8 @@ const inputLink = cardForm.querySelector('.edit-form__item_link');
 const cardFormErrors = cardForm.querySelectorAll('.edit-form__error');
 const gridTemplate = document.querySelector('#card').content;
 const gridCards = document.querySelector('.grid__cards');
-
+const zoomedImage = cardZoom.querySelector('.edit-form__image-zoom');
+const zoomedTitle = cardZoom.querySelector('.edit-form__heading_zoom');
 
 function formToggle(modalWindow) {
     modalWindow.classList.toggle('edit-form_open');
@@ -71,15 +72,14 @@ function formClose(target,modalWindow) {
         });    
     }
 }
+
 // imageZoom - принимаем значения {src: src, alt: alt, title: title}
 function imageZoom(data) {
-    const image = cardZoom.querySelector('.edit-form__image-zoom');
-    const title = cardZoom.querySelector('.edit-form__heading_zoom');
     formToggle(cardZoom);
     if (cardZoom.classList.contains('edit-form_open')) {
-        image.src = data.src;
-        image.alt = data.alt;
-        title.textContent = data.title;
+        zoomedImage.src = data.src;
+        zoomedImage.alt = data.alt;
+        zoomedTitle.textContent = data.title;
     }   
 }
 function editProfileFill() {
