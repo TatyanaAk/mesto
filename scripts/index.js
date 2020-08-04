@@ -102,11 +102,9 @@ function saveProfile(event) {
     formToggle(editForm);
     editProfileFill();
 }
-function showCard(card) {
-    gridCards.prepend(card);
-}
-// renderCard - рисуем карточку.
-function renderCard(data) {
+
+// createCard - рисуем карточку.
+function createCard(data) {
     const gridElement = gridTemplate.cloneNode(true);
     const image = gridElement.querySelector('.grid__grid-image');
     const title = gridElement.querySelector('.grid__title');
@@ -129,9 +127,9 @@ function renderCard(data) {
     return gridElement;
 }
 
-function addCard(data) {  
-    const card = renderCard(data);
-    showCard(card);
+function renderCard(data) {  
+    const card = createCard(data);
+    gridCards.prepend(card);
 }
 //устанавливаем обработчик событий на кнопки.
 openEditButton.addEventListener('click', () => {
@@ -158,14 +156,14 @@ form.addEventListener('submit',saveProfile);
 // устанавливаю обработчик для создания карточек
 cardCreateBt.addEventListener('submit', (event) => {
     event.preventDefault();
-    addCard({name: inputTitle.value, link: inputLink.value });
+    renderCard({name: inputTitle.value, link: inputLink.value });
     formToggle(cardForm);
     cardFormInit();
 });
 //создание карточек по умолчанию.
 initialCards.forEach((initialCard) => {
-    const card = renderCard(initialCard);
-    showCard(card);
+    const card = createCard(initialCard);
+    gridCards.prepend(card);
 }); 
 
 function escEvent(evt) {
