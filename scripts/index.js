@@ -49,11 +49,17 @@ const gridCards = document.querySelector('.grid__cards');
 
 function formToggle(modalWindow) {
     modalWindow.classList.toggle('edit-form_open');
+    if (modalWindow.classList.contains('edit-form_open')) {
+        closeEsc();
+    } else {
+        closeEscRemove();
+    }
 }
 function formClose(target,modalWindow) {
     if (target.classList.contains('edit-form')
             ||target.classList.contains('edit-form__close-icon')){
         modalWindow.classList.remove('edit-form_open');
+        closeEscRemove();
         const inputs = Array.from(modalWindow.querySelectorAll('.edit-form__item'));
         inputs.forEach( (input) => {
             input.classList.remove('edit-form__item_type_error');
@@ -162,8 +168,7 @@ initialCards.forEach((initialCard) => {
     showCard(card);
 }); 
 
-// закрытие модалок устанавливаем на весь документ
-document.addEventListener('keydown', (evt) => {
+function escEvent(evt) {
     if (evt.key === 'Escape') {
         modals.forEach( (modal) => {
             if (modal.classList.contains('edit-form_open')) {
@@ -174,4 +179,12 @@ document.addEventListener('keydown', (evt) => {
             }
         });
     }
-});
+}
+// создает событие закрытия на модалке по нажатию на esc
+function closeEsc() {
+    document.addEventListener('keydown', escEvent);
+}
+
+function closeEscRemove() {
+    document.removeEventListener('keydown', escEvent);
+}
