@@ -28,47 +28,47 @@ const initialCards = [
 const openEditButton = document.querySelector('.profile__edit-button');
 const openAddCard = document.querySelector('.profile__add-button');
 const profileInfo = document.querySelector('.profile__profile-info');
-const editForm = document.querySelector('.edit-form_profile');
-const cardForm = document.querySelector('.edit-form_card');
-const cardZoom = document.querySelector('.edit-form_card-zoom');
-const modals = document.querySelectorAll('.edit-form');
+const editForm = document.querySelector('.popup_profile');
+const cardForm = document.querySelector('.popup_card');
+const cardZoom = document.querySelector('.popup_card-zoom');
+const modals = document.querySelectorAll('.popup');
 // элементы профиля
-const form = editForm.querySelector('.edit-form__form');
+const form = editForm.querySelector('.popup__form');
 const name = profileInfo.querySelector('.profile__name');
 const memo = profileInfo.querySelector('.profile__memo');
-const inputName = form.querySelector('.edit-form__item_name');
-const inputMemo = form.querySelector('.edit-form__item_memo');
+const inputName = form.querySelector('.popup__item_name');
+const inputMemo = form.querySelector('.popup__item_memo');
 // элементы модалки создания карточки
-const cardCreateBt = cardForm.querySelector('.edit-form__form');
-const inputTitle = cardForm.querySelector('.edit-form__item_title');
-const inputLink = cardForm.querySelector('.edit-form__item_link');
-const cardFormErrors = cardForm.querySelectorAll('.edit-form__error');
+const cardCreateBt = cardForm.querySelector('.popup__form');
+const inputTitle = cardForm.querySelector('.popup__item_title');
+const inputLink = cardForm.querySelector('.popup__item_link');
+const cardFormErrors = cardForm.querySelectorAll('.popup__error');
 const gridTemplate = document.querySelector('#card').content;
 const gridCards = document.querySelector('.grid__cards');
-const zoomedImage = cardZoom.querySelector('.edit-form__image-zoom');
-const zoomedTitle = cardZoom.querySelector('.edit-form__heading_zoom');
+const zoomedImage = cardZoom.querySelector('.popup__image-zoom');
+const zoomedTitle = cardZoom.querySelector('.popup__heading_zoom');
 
 function formToggle(modalWindow) {
-    modalWindow.classList.toggle('edit-form_open');
-    if (modalWindow.classList.contains('edit-form_open')) {
+    modalWindow.classList.toggle('popup_open');
+    if (modalWindow.classList.contains('popup_open')) {
         closeEsc();
     } else {
         closeEscRemove();
     }
 }
 function formClose(target,modalWindow) {
-    if (target.classList.contains('edit-form')
-            ||target.classList.contains('edit-form__close-icon')){
-        modalWindow.classList.remove('edit-form_open');
+    if (target.classList.contains('popup')
+            ||target.classList.contains('popup__close-icon')){
+        modalWindow.classList.remove('popup_open');
         closeEscRemove();
-        const inputs = Array.from(modalWindow.querySelectorAll('.edit-form__item'));
+        const inputs = Array.from(modalWindow.querySelectorAll('.popup__item'));
         inputs.forEach( (input) => {
-            input.classList.remove('edit-form__item_type_error');
+            input.classList.remove('popup__item_type_error');
         });
        
-        const errors = Array.from(modalWindow.querySelectorAll('.edit-form__error'));
+        const errors = Array.from(modalWindow.querySelectorAll('.popup__error'));
         errors.forEach( (err) => {
-            err.classList.remove('edit-form__error_visible');
+            err.classList.remove('popup__error_visible');
         });    
     }
 }
@@ -76,20 +76,20 @@ function formClose(target,modalWindow) {
 // imageZoom - принимаем значения {src: src, alt: alt, title: title}
 function imageZoom(data) {
     formToggle(cardZoom);
-    if (cardZoom.classList.contains('edit-form_open')) {
+    if (cardZoom.classList.contains('popup_open')) {
         zoomedImage.src = data.src;
         zoomedImage.alt = data.alt;
         zoomedTitle.textContent = data.title;
     }   
 }
 function editProfileFill() {
-    if (editForm.classList.contains('edit-form_open')) {
+    if (editForm.classList.contains('popup_open')) {
         inputName.value = name.textContent;
         inputMemo.value = memo.textContent;
     }
 }
 function cardFormInit() {
-    if (!cardForm.classList.contains('edit-form_open')) {
+    if (!cardForm.classList.contains('popup_open')) {
         inputTitle.value = '';
         inputLink.value = '';
     }
@@ -173,9 +173,9 @@ initialCards.forEach((initialCard) => {
 function escEvent(evt) {
     if (evt.key === 'Escape') {
         modals.forEach( (modal) => {
-            if (modal.classList.contains('edit-form_open')) {
+            if (modal.classList.contains('popup_open')) {
                 formToggle(modal);
-                if (modal.classList.contains('edit-form_card')) {
+                if (modal.classList.contains('popup_card')) {
                     cardFormInit();
                 }
             }

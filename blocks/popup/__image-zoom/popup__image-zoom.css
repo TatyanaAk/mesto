@@ -1,4 +1,4 @@
-.edit-form__image-zoom {
+.popup__image-zoom {
     max-width: 75vw;
     max-height: 75vh;
     transform: matrix(-1, 0, 0, 1, 0, 0);

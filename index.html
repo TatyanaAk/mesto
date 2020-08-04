@@ -33,36 +33,36 @@
     <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <div class="edit-form edit-form_profile">
-        <form action="#" name="profile-edit" class="edit-form__form" novalidate>
-            <button type="button" class="edit-form__close-icon"></button>
-            <h2 class="edit-form__heading">Редактировать профиль</h2>
-            <input id="name-input" type="text" name="name" class="edit-form__item edit-form__item_name" minlength="2" maxlength="40" required>
-            <div class="edit-form__marquee"><span  id="name-input-error" class="edit-form__error"></span></div>
-            <input id="memo-input" type="text" name="memo" class="edit-form__item edit-form__item_memo" minlength="2" maxlength="200" required>
-            <div class="edit-form__marquee"><span  id="memo-input-error" class="edit-form__error"></span></div>
-            <button type="submit" class="edit-form__button">Сохранить</button>
+    <div class="popup popup_profile">
+        <form action="#" name="profile-edit" class="popup__form" novalidate>
+            <button type="button" class="popup__close-icon"></button>
+            <h2 class="popup__heading">Редактировать профиль</h2>
+            <input id="name-input" type="text" name="name" class="popup__item popup__item_name" minlength="2" maxlength="40" required>
+            <div class="popup__marquee"><span  id="name-input-error" class="popup__error"></span></div>
+            <input id="memo-input" type="text" name="memo" class="popup__item popup__item_memo" minlength="2" maxlength="200" required>
+            <div class="popup__marquee"><span  id="memo-input-error" class="popup__error"></span></div>
+            <button type="submit" class="popup__button">Сохранить</button>
         </form>
     </div>
-    <div class="edit-form edit-form_card">
-        <form action="#" name="card-edit" class="edit-form__form" novalidate>
-            <button type="button" class="edit-form__close-icon"></button>
-            <h2 class="edit-form__heading">Новое место</h2>
-            <input id="title-input"  type="text" name="title" class="edit-form__item edit-form__item_title" placeholder="Название"
+    <div class="popup popup_card">
+        <form action="#" name="card-edit" class="popup__form" novalidate>
+            <button type="button" class="popup__close-icon"></button>
+            <h2 class="popup__heading">Новое место</h2>
+            <input id="title-input"  type="text" name="title" class="popup__item popup__item_title" placeholder="Название"
              minlength="1" maxlength="30" required>
-             <div class="edit-form__marquee"><span  id="title-input-error" class="edit-form__error"></span></div>
-            <input id="url-input" type="url" name="link" class="edit-form__item edit-form__item_link" placeholder="Ссылка на картинку" required>
-            <div class="edit-form__marquee"><span  id="url-input-error" class="edit-form__error"></span></div>
-            <button type="submit" class="edit-form__button">Создать</button>
+             <div class="popup__marquee"><span  id="title-input-error" class="popup__error"></span></div>
+            <input id="url-input" type="url" name="link" class="popup__item popup__item_link" placeholder="Ссылка на картинку" required>
+            <div class="popup__marquee"><span  id="url-input-error" class="popup__error"></span></div>
+            <button type="submit" class="popup__button">Создать</button>
         </form>
     </div>
-    <div class="edit-form edit-form_card-zoom">
-        <div class="edit-form__images">
-            <form action="#" name="zoomed-image" class="edit-form__form edit-form__form_zoom">
-                <button type="button" class="edit-form__close-icon"></button>
-                <img src="#" alt="image" class="edit-form__image-zoom">    
+    <div class="popup popup_card-zoom">
+        <div class="popup__images">
+            <form action="#" name="zoomed-image" class="popup__form popup__form_zoom">
+                <button type="button" class="popup__close-icon"></button>
+                <img src="#" alt="image" class="popup__image-zoom">    
             </form>
-            <p class="edit-form__heading edit-form__heading_zoom"></p>
+            <p class="popup__heading popup__heading_zoom"></p>
         </div>
     </div>
     <template id="card">

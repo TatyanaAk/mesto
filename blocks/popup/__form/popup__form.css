@@ -1,4 +1,4 @@
-.edit-form__form {
+.popup__form {
     display: flex;
     max-width: 430px;
     background: #FFFFFF;
@@ -13,7 +13,7 @@
 
 
 @media only screen and (max-width: 500px) {
-    .edit-form__form {
+    .popup__form {
         max-width: 200px;
         text-align: center;
         padding: 30px 20px;

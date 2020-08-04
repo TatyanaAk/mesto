@@ -1,4 +1,4 @@
-.edit-form__error {
+.popup__error {
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
@@ -8,7 +8,7 @@
     display:none;
     max-width: 358px;
 }
-.edit-form__error:hover {
+.popup__error:hover {
     -webkit-animation: marquee 60s infinite linear;
     animation: marquee 10s infinite linear;
 }

@@ -1,10 +1,10 @@
 const params = {
-    formSelector: '.edit-form',
-    inputSelector: '.edit-form__item',
-    submitButtonSelector: '.edit-form__button',
-    inactiveButtonClass: 'edit-form__button_inactive',
-    inputErrorClass: 'edit-form__item_type_error',
-    errorClass: 'edit-form__error_visible'
+    formSelector: '.popup',
+    inputSelector: '.popup__item',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_inactive',
+    inputErrorClass: 'popup__item_type_error',
+    errorClass: 'popup__error_visible'
   };
 //пишем сообщение об ошибке под полем ввода
 const showInputError = (formSelector, inputSelector, errorMessage,settings) => {
@@ -88,7 +88,7 @@ const newEmptyForm = (formSelector,settings) => {
     });
 };
 const enableValidation = (settings) => {
-    // делаем массив для форм с классом .edit-form
+    // делаем массив для форм с классом .popup
     const formList = Array.from(document.querySelectorAll(settings.formSelector));
   
     // Переберём полученную коллекцию
@@ -103,8 +103,8 @@ const enableValidation = (settings) => {
 enableValidation(params);
 const openEditButtonValidate = document.querySelector('.profile__edit-button');
 const openAddCardValidate = document.querySelector('.profile__add-button');
-const cardFormValidate = document.querySelector('.edit-form_card');
-const editFormValidate = document.querySelector('.edit-form_profile');
+const cardFormValidate = document.querySelector('.popup_card');
+const editFormValidate = document.querySelector('.popup_profile');
 openAddCardValidate.addEventListener('click', () => {
     newEmptyForm(cardFormValidate,params);
 });

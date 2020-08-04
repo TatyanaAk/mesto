@@ -1,4 +1,4 @@
-.edit-form__close-icon {
+.popup__close-icon {
     position: absolute;
     top: -45px;
     right: -45px;
@@ -13,11 +13,11 @@
     outline: none;
     transition: opacity .3s ease;   
 }
-.edit-form__close-icon:hover {
+.popup__close-icon:hover {
     opacity: 0.6;
 }
 @media only screen and (max-width: 500px) {
-    .edit-form__close-icon {
+    .popup__close-icon {
         width: 34px;
         height: 34px;
         top: -26px;
