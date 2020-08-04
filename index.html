@@ -1,81 +1,87 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="спринт4 яндекс практикум">
-    <meta name="keywords" content="html,css,js">
-    <meta name="author" content="Татьяна А">
-    <link rel="stylesheet" href="styles/index.css">
-    <title>mesto</title>
-  </head>
-  <body class="page">
-    <header class="header">
-        <img src="images/logo.svg" class="header__logo" alt="Место Россия">
-    </header>
-    <main class="content">
-        <section class="profile">
-            <img src="images/kusto.jpg" alt="Жак-Ив Кусто" class="profile__avatar">
-            <div class="profile__profile-info">
-               <div>
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <p class="profile__memo">Исследователь океана</p>
-               </div>
-               <button type="button" class="profile__edit-button"></button>
-            </div> 
-            <button type="button" class="profile__add-button"></button>
-        </section>
-        <section class="grid">
-            <ul class="grid__cards">
-            </ul>
-        </section>
-    </main>
-    <footer class="footer">
-        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
-    </footer>
-    <div class="popup popup_profile">
-        <form action="#" name="profile-edit" class="popup__form" novalidate>
-            <button type="button" class="popup__close-icon"></button>
-            <h2 class="popup__heading">Редактировать профиль</h2>
-            <input id="name-input" type="text" name="name" class="popup__item popup__item_name" minlength="2" maxlength="40" required>
-            <div class="popup__marquee"><span  id="name-input-error" class="popup__error"></span></div>
-            <input id="memo-input" type="text" name="memo" class="popup__item popup__item_memo" minlength="2" maxlength="200" required>
-            <div class="popup__marquee"><span  id="memo-input-error" class="popup__error"></span></div>
-            <button type="submit" class="popup__button">Сохранить</button>
-        </form>
-    </div>
-    <div class="popup popup_card">
-        <form action="#" name="card-edit" class="popup__form" novalidate>
-            <button type="button" class="popup__close-icon"></button>
-            <h2 class="popup__heading">Новое место</h2>
-            <input id="title-input"  type="text" name="title" class="popup__item popup__item_title" placeholder="Название"
-             minlength="1" maxlength="30" required>
-             <div class="popup__marquee"><span  id="title-input-error" class="popup__error"></span></div>
-            <input id="url-input" type="url" name="link" class="popup__item popup__item_link" placeholder="Ссылка на картинку" required>
-            <div class="popup__marquee"><span  id="url-input-error" class="popup__error"></span></div>
-            <button type="submit" class="popup__button">Создать</button>
-        </form>
-    </div>
-    <div class="popup popup_card-zoom">
-        <div class="popup__images">
-            <form action="#" name="zoomed-image" class="popup__form popup__form_zoom">
-                <button type="button" class="popup__close-icon"></button>
-                <img src="#" alt="image" class="popup__image-zoom">    
-            </form>
-            <p class="popup__heading popup__heading_zoom"></p>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="спринт4 яндекс практикум">
+  <meta name="keywords" content="html,css,js">
+  <meta name="author" content="Татьяна А">
+  <link rel="stylesheet" href="styles/index.css">
+  <title>mesto</title>
+</head>
+
+<body class="page">
+  <header class="header">
+    <img src="images/logo.svg" class="header__logo" alt="Место Россия">
+  </header>
+  <main class="content">
+    <section class="profile">
+      <img src="images/kusto.jpg" alt="Жак-Ив Кусто" class="profile__avatar">
+      <div class="profile__profile-info">
+        <div>
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <p class="profile__memo">Исследователь океана</p>
         </div>
+        <button type="button" class="profile__edit-button"></button>
+      </div>
+      <button type="button" class="profile__add-button"></button>
+    </section>
+    <section class="grid">
+      <ul class="grid__cards">
+      </ul>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+  </footer>
+  <div class="popup popup_profile">
+    <form action="#" name="profile-edit" class="popup__form" novalidate>
+      <button type="button" class="popup__close-icon"></button>
+      <h2 class="popup__heading">Редактировать профиль</h2>
+      <input id="name-input" type="text" name="name" class="popup__item popup__item_name" minlength="2"
+        maxlength="40" required>
+      <div class="popup__marquee"><span id="name-input-error" class="popup__error"></span></div>
+      <input id="memo-input" type="text" name="memo" class="popup__item popup__item_memo" minlength="2"
+        maxlength="200" required>
+      <div class="popup__marquee"><span id="memo-input-error" class="popup__error"></span></div>
+      <button type="submit" class="popup__button">Сохранить</button>
+    </form>
+  </div>
+  <div class="popup popup_card">
+    <form action="#" name="card-edit" class="popup__form" novalidate>
+      <button type="button" class="popup__close-icon"></button>
+      <h2 class="popup__heading">Новое место</h2>
+      <input id="title-input" type="text" name="title" class="popup__item popup__item_title"
+        placeholder="Название" minlength="1" maxlength="30" required>
+      <div class="popup__marquee"><span id="title-input-error" class="popup__error"></span></div>
+      <input id="url-input" type="url" name="link" class="popup__item popup__item_link"
+        placeholder="Ссылка на картинку" required>
+      <div class="popup__marquee"><span id="url-input-error" class="popup__error"></span></div>
+      <button type="submit" class="popup__button">Создать</button>
+    </form>
+  </div>
+  <div class="popup popup_card-zoom">
+    <div class="popup__images">
+      <form action="#" name="zoomed-image" class="popup__form popup__form_zoom">
+        <button type="button" class="popup__close-icon"></button>
+        <img src="#" alt="image" class="popup__image-zoom">
+      </form>
+      <p class="popup__heading popup__heading_zoom"></p>
     </div>
-    <template id="card">
-        <li class="grid__element">
-            <img src="" alt="image" class="grid__grid-image">
-            <button type="button" class="grid__basket"></button>
-            <div class="grid__description">
-                <h3 class="grid__title"></h3>
-                <button type="button" class="grid__heart"></button>
-            </div>
-        </li>
-    </template>
-    <script src="scripts/index.js"></script>
-    <script src="scripts/validate.js"></script>
-  </body>
+  </div>
+  <template id="card">
+    <li class="grid__element">
+      <img src="" alt="image" class="grid__grid-image">
+      <button type="button" class="grid__basket"></button>
+      <div class="grid__description">
+        <h3 class="grid__title"></h3>
+        <button type="button" class="grid__heart"></button>
+      </div>
+    </li>
+  </template>
+  <script src="scripts/index.js"></script>
+  <script src="scripts/validate.js"></script>
+</body>
+
 </html>
