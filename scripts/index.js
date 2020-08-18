@@ -43,7 +43,6 @@ const cardCreateBt = cardForm.querySelector('.popup__form');
 const inputTitle = cardForm.querySelector('.popup__item_title');
 const inputLink = cardForm.querySelector('.popup__item_link');
 const cardFormErrors = cardForm.querySelectorAll('.popup__error');
-const gridTemplate = document.querySelector('#card').content;
 const gridCards = document.querySelector('.grid__cards');
 const zoomedImage = cardZoom.querySelector('.popup__image-zoom');
 const zoomedTitle = cardZoom.querySelector('.popup__heading_zoom');
@@ -103,12 +102,13 @@ function saveProfile(event) {
   editProfileFill();
 }
 class Card {
-  constructor(data) {
+  constructor(data, cardSelector) {
     this._link = data.link;
     this._name = data.name;
+    this._cardSelector = cardSelector;
   }
   _getTemplate() {
-    const gridElement = gridTemplate.cloneNode(true);
+    const gridElement = document.querySelector(this._cardSelector).content.cloneNode(true);
     return gridElement;
   }
   createCard() {
@@ -145,7 +145,7 @@ class Card {
 }
 
 function renderCard(data) {
-  const card = new Card(data);
+  const card = new Card(data, '#card');
   const cardElement = card.createCard();
   gridCards.prepend(cardElement);
 }
@@ -180,7 +180,7 @@ cardCreateBt.addEventListener('submit', (event) => {
 });
 //создание карточек по умолчанию.
 initialCards.forEach((initialCard) => {
-  const card = new Card(initialCard);
+  const card = new Card(initialCard, '#card');
   const cardElement = card.createCard();
   gridCards.prepend(cardElement);
 });
