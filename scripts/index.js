@@ -102,38 +102,52 @@ function saveProfile(event) {
   formToggle(editForm);
   editProfileFill();
 }
+class Card {
+  constructor(data) {
+    this._link = data.link;
+    this._name = data.name;
+  }
+  _getTemplate() {
+    const gridElement = gridTemplate.cloneNode(true);
+    return gridElement;
+  }
+  createCard() {
+    this._gridElement = this._getTemplate();
 
-// createCard - создаём карточку.
-function createCard(data) {
-  const gridElement = gridTemplate.cloneNode(true);
-  const image = gridElement.querySelector('.grid__grid-image');
-  const title = gridElement.querySelector('.grid__title');
-  const heart = gridElement.querySelector('.grid__heart');
-  image.src = data.link;
-  image.alt = data.name;
-  title.textContent = data.name;
-  heart.addEventListener('click', function (evt) {
-    evt.target.classList.toggle('grid__heart_active');
-  });
-  const deleteButton = gridElement.querySelector('.grid__basket');
-  deleteButton.addEventListener('click', function () {
-    const listItem = deleteButton.closest('.grid__element');
-    listItem.remove();
-  });
 
-  image.addEventListener('click', (event) => {
-    imageZoom({ src: image.src, alt: image.alt, title: title.textContent });
-  });
-  return gridElement;
+    this._image = this._gridElement.querySelector('.grid__grid-image');
+    this._title = this._gridElement.querySelector('.grid__title');
+    this._heart = this._gridElement.querySelector('.grid__heart');
+    this._deleteButton = this._gridElement.querySelector('.grid__basket');
+    this._image.src = this._link;
+    this._image.alt = this._name;
+    this._title.textContent = this._name
+    this._setEventListeners();
+
+    return this._gridElement;
+  }
+  _delete() {
+    this._listItem = this._deleteButton.closest('.grid__element');
+    this._listItem.remove();
+  }
+  _setEventListeners() {
+    this._heart.addEventListener('click', function (evt) {
+      evt.target.classList.toggle('grid__heart_active');
+    });
+    this._deleteButton.addEventListener('click', () => {
+      this._delete();
+    });
+    this._image.addEventListener('click', () => {
+      imageZoom({ src: this._image.src, alt: this._image.alt, title: this._title.textContent });
+    });
+  }
+
 }
 
 function renderCard(data) {
-  const card = createCard(data);
-  // из-за требования предыдущего ревьюера "функция должна выполнять только одно действие"
-  // перенесла строчку в отдельную функцию :)
-  // вообще не поняла зачем это надо бало делать
-  // вернула как было
-  gridCards.prepend(card);
+  const card = new Card(data);
+  const cardElement = card.createCard();
+  gridCards.prepend(cardElement);
 }
 //устанавливаем обработчик событий на кнопки.
 openEditButton.addEventListener('click', () => {
@@ -166,8 +180,9 @@ cardCreateBt.addEventListener('submit', (event) => {
 });
 //создание карточек по умолчанию.
 initialCards.forEach((initialCard) => {
-  const card = createCard(initialCard);
-  gridCards.prepend(card);
+  const card = new Card(initialCard);
+  const cardElement = card.createCard();
+  gridCards.prepend(cardElement);
 });
 
 function escEvent(evt) {
