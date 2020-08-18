@@ -108,7 +108,7 @@ class Card {
     this._cardSelector = cardSelector;
   }
   _getTemplate() {
-    const gridElement = document.querySelector(this._cardSelector).content.cloneNode(true);
+    const gridElement = document.querySelector(this._cardSelector).content.querySelector('.grid__element').cloneNode(true);
     return gridElement;
   }
   createCard() {
@@ -127,8 +127,7 @@ class Card {
     return this._gridElement;
   }
   _delete() {
-    this._listItem = this._deleteButton.closest('.grid__element');
-    this._listItem.remove();
+    this._gridElement.remove();
   }
   _setEventListeners() {
     this._heart.addEventListener('click', function (evt) {
