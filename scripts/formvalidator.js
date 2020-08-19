@@ -1,18 +1,4 @@
-const params = {
-  formSelector: '.popup',
-  inputSelector: '.popup__item',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_inactive',
-  inputErrorClass: 'popup__item_type_error',
-  errorClass: 'popup__error_visible'
-};
-
-const openEditButtonValidate = document.querySelector('.profile__edit-button');
-const openAddCardValidate = document.querySelector('.profile__add-button');
-const cardFormValidate = document.querySelector('.popup_card');
-const editFormValidate = document.querySelector('.popup_profile');
-
-class FormValidator {
+export default class FormValidator {
   // передаем в конструктор
   // settings - массив параметров params
   // formElement - форма для валидации
@@ -111,9 +97,6 @@ class FormValidator {
   }
 }
 
-const popupProfile = new FormValidator(params, editFormValidate, openEditButtonValidate);
-const popupCard = new FormValidator(params, cardFormValidate, openAddCardValidate);
-popupProfile.enableValidation();
-popupCard.enableValidation();
+
 
 
