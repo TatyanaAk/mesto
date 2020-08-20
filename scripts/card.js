@@ -8,6 +8,7 @@ export default class Card {
     const gridElement = document.querySelector(this._cardSelector).content.querySelector('.grid__element').cloneNode(true);
     return gridElement;
   }
+
   createCard() {
     this._gridElement = this._getTemplate();
 
@@ -23,19 +24,21 @@ export default class Card {
 
     return this._gridElement;
   }
-  _delete() {
+  _deleteCard() {
     this._gridElement.remove();
+    this._gridElement = null;
   }
   _setEventListeners() {
-    this._heart.addEventListener('click', function (evt) {
-      evt.target.classList.toggle('grid__heart_active');
+    this._heart.addEventListener('click', () => {
+      this._handleLike();
     });
+
     this._deleteButton.addEventListener('click', () => {
-      this._delete();
+      this._deleteCard();
     });
-    // this._image.addEventListener('click', () => {
-    //   imageZoom({ src: this._image.src, alt: this._image.alt, title: this._title.textContent });
-    // });
+  }
+  _handleLike() {
+    this._heart.classList.toggle('grid__heart_active');
   }
 
 }
