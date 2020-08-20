@@ -52,7 +52,7 @@ function zoomImage(data) {
     zoomedTitle.textContent = data.title;
   }
 }
-function fillEditProfilee() {
+function fillEditProfile() {
   if (editForm.classList.contains('popup_open')) {
     inputName.value = name.textContent;
     inputMemo.value = memo.textContent;
