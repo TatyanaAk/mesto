@@ -23,7 +23,7 @@ const gridCards = document.querySelector('.grid__cards');
 const zoomedImage = cardZoom.querySelector('.popup__image-zoom');
 const zoomedTitle = cardZoom.querySelector('.popup__heading_zoom');
 
-function formToggle(modalWindow) {
+function toggleForm(modalWindow) {
   modalWindow.classList.toggle('popup_open');
   if (modalWindow.classList.contains('popup_open')) {
     closeEsc();
@@ -31,16 +31,11 @@ function formToggle(modalWindow) {
     closeEscRemove();
   }
 }
-function formClose(target, modalWindow) {
+function closeForm(target, modalWindow) {
   if (target.classList.contains('popup')
     || target.classList.contains('popup__close-icon')) {
     modalWindow.classList.remove('popup_open');
     closeEscRemove();
-    const inputs = Array.from(modalWindow.querySelectorAll('.popup__item'));
-    inputs.forEach((input) => {
-      input.classList.remove('popup__item_type_error');
-    });
-
     const errors = Array.from(modalWindow.querySelectorAll('.popup__error'));
     errors.forEach((err) => {
       err.classList.remove('popup__error_visible');
@@ -49,21 +44,21 @@ function formClose(target, modalWindow) {
 }
 
 // imageZoom - принимаем значения {src: src, alt: alt, title: title}
-function imageZoom(data) {
-  formToggle(cardZoom);
+function zoomImage(data) {
+  toggleForm(cardZoom);
   if (cardZoom.classList.contains('popup_open')) {
     zoomedImage.src = data.src;
     zoomedImage.alt = data.alt;
     zoomedTitle.textContent = data.title;
   }
 }
-function editProfileFill() {
+function fillEditProfilee() {
   if (editForm.classList.contains('popup_open')) {
     inputName.value = name.textContent;
     inputMemo.value = memo.textContent;
   }
 }
-function cardFormInit() {
+function initCardForm() {
   if (!cardForm.classList.contains('popup_open')) {
     inputTitle.value = '';
     inputLink.value = '';
@@ -74,8 +69,8 @@ function saveProfile(event) {
   event.preventDefault();
   name.textContent = inputName.value;
   memo.textContent = inputMemo.value;
-  formToggle(editForm);
-  editProfileFill();
+  toggleForm(editForm);
+  fillEditProfile();
 }
 
 function renderCard(data) {
@@ -85,29 +80,29 @@ function renderCard(data) {
   const title = cardElement.querySelector('.grid__title');
   cardElement.addEventListener('click', (evt) => {
     if (evt.target.classList.contains('grid__grid-image')) {
-      imageZoom({ src: image.src, alt: image.alt, title: title.textContent });
+      zoomImage({ src: image.src, alt: image.alt, title: title.textContent });
     }
   });
   gridCards.prepend(cardElement);
 }
 //устанавливаем обработчик событий на кнопки.
 openEditButton.addEventListener('click', () => {
-  formToggle(editForm);
-  editProfileFill();
+  toggleForm(editForm);
+  fillEditProfile();
 });
 editForm.addEventListener('click', (evt) => {
-  formClose(evt.target, editForm);
+  closeForm(evt.target, editForm);
 });
 
 openAddCard.addEventListener('click', () => {
-  formToggle(cardForm);
+  toggleForm(cardForm);
 });
 cardForm.addEventListener('click', (evt) => {
-  formClose(evt.target, cardForm);
-  cardFormInit();
+  closeForm(evt.target, cardForm);
+  initCardForm();
 });
 cardZoom.addEventListener('click', (evt) => {
-  formClose(evt.target, cardZoom);
+  closeForm(evt.target, cardZoom);
 });
 // устанавливаю обработчик для заполнения формы профиля
 form.addEventListener('submit', saveProfile);
@@ -116,30 +111,21 @@ form.addEventListener('submit', saveProfile);
 cardCreateBt.addEventListener('submit', (event) => {
   event.preventDefault();
   renderCard({ name: inputTitle.value, link: inputLink.value });
-  formToggle(cardForm);
-  cardFormInit();
+  toggleForm(cardForm);
+  initCardForm();
 });
 //создание карточек по умолчанию.
 initialCards.forEach((initialCard) => {
-  const card = new Card(initialCard, '#card');
-  const cardElement = card.createCard();
-  const image = cardElement.querySelector('.grid__grid-image');
-  const title = cardElement.querySelector('.grid__title');
-  cardElement.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('grid__grid-image')) {
-      imageZoom({ src: image.src, alt: image.alt, title: title.textContent });
-    }
-  });
-  gridCards.prepend(cardElement);
+  renderCard(initialCard);
 });
 
 function escEvent(evt) {
   if (evt.key === 'Escape') {
     modals.forEach((modal) => {
       if (modal.classList.contains('popup_open')) {
-        formToggle(modal);
+        toggleForm(modal);
         if (modal.classList.contains('popup_card')) {
-          cardFormInit();
+          initCardForm();
         }
       }
     });

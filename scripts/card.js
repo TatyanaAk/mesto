@@ -40,5 +40,4 @@ export default class Card {
   _handleLike() {
     this._heart.classList.toggle('grid__heart_active');
   }
-
 }
