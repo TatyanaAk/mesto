@@ -1,5 +1,5 @@
 import { params, initialCards } from "../utils/constants.js";
-import Card from "./card.js";
+import Card from "../src/components/card.js";
 import FormValidator from './formvalidator.js';
 const openEditButton = document.querySelector('.profile__edit-button');
 const openAddCard = document.querySelector('.profile__add-button');
