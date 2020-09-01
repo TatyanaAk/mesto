@@ -1,8 +1,9 @@
 export default class Card {
-  constructor(data, cardSelector) {
-    this._link = data.link;
-    this._name = data.name;
+  constructor({ link ,name }, cardSelector, handleCardClick) {
+    this._link = link;
+    this._name = name;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
   _getTemplate() {
     const gridElement = document.querySelector(this._cardSelector).content.querySelector('.grid__element').cloneNode(true);
@@ -35,6 +36,11 @@ export default class Card {
 
     this._deleteButton.addEventListener('click', () => {
       this._deleteCard();
+    });
+    this._gridElement.addEventListener('click', (evt) => {
+      if (evt.target.classList.contains('grid__grid-image')) {
+        this._handleCardClick({ src: this._image.src, alt: this._image.alt, title: this._title.textContent });
+      }
     });
   }
   _handleLike() {

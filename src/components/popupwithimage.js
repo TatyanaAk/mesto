@@ -1,26 +1,15 @@
-export default class PopupWithImage {
+import Popup from './popup.js';
+
+export default class PopupWithImage extends Popup {
   constructor(popupSelector) {
     super(popupSelector);
-    this._renderCard = renderCard;
+    this._zoomImage = this._popupSelector.querySelector('.popup__image-zoom');
+    this._zoomedTitle = this._popupSelector.querySelector('.popup__heading_zoom');
   }
-  _renderCard(data) {
-    const card = new Card(data, '#card');
-    const cardElement = card.createCard();
-    const image = cardElement.querySelector('.grid__grid-image');
-    const title = cardElement.querySelector('.grid__title');
-    cardElement.addEventListener('click', (evt) => {
-      if (evt.target.classList.contains('grid__grid-image')) {
-        zoomImage({ src: image.src, alt: image.alt, title: title.textContent });
-      }
-    });
-    gridCards.prepend(cardElement);
-  }
-  _zoomImage(data) {
-    toggleForm(cardZoom);
-    if (cardZoom.classList.contains('popup_open')) {
-      zoomedImage.src = data.src;
-      zoomedImage.alt = data.alt;
-      zoomedTitle.textContent = data.title;
-    }
+  open({src,alt,title}) {
+    this._zoomImage.src = src;
+    this._zoomImage.alt = alt;
+    this._zoomedTitle.textContent = title;
+    super.open();
   }
 }

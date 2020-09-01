@@ -1,6 +1,7 @@
 import { params, initialCards } from "../utils/constants.js";
 import Card from "../src/components/card.js";
 import FormValidator from './formvalidator.js';
+import PopupWithImage from '../src/components/popupwithimage.js';
 const openEditButton = document.querySelector('.profile__edit-button');
 const openAddCard = document.querySelector('.profile__add-button');
 const profileInfo = document.querySelector('.profile__profile-info');
@@ -45,12 +46,9 @@ function closeForm(target, modalWindow) {
 
 // imageZoom - принимаем значения {src: src, alt: alt, title: title}
 function zoomImage(data) {
-  toggleForm(cardZoom);
-  if (cardZoom.classList.contains('popup_open')) {
-    zoomedImage.src = data.src;
-    zoomedImage.alt = data.alt;
-    zoomedTitle.textContent = data.title;
-  }
+  const popupWithImage = new PopupWithImage('.popup_card-zoom');
+  popupWithImage.setEventListeners();
+  popupWithImage.open(data);
 }
 function fillEditProfile() {
   if (editForm.classList.contains('popup_open')) {
@@ -74,15 +72,10 @@ function saveProfile(event) {
 }
 
 function renderCard(data) {
-  const card = new Card(data, '#card');
+  const card = new Card(data, '#card',zoomImage);
   const cardElement = card.createCard();
   const image = cardElement.querySelector('.grid__grid-image');
   const title = cardElement.querySelector('.grid__title');
-  cardElement.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('grid__grid-image')) {
-      zoomImage({ src: image.src, alt: image.alt, title: title.textContent });
-    }
-  });
   gridCards.prepend(cardElement);
 }
 //устанавливаем обработчик событий на кнопки.
@@ -101,9 +94,9 @@ cardForm.addEventListener('click', (evt) => {
   closeForm(evt.target, cardForm);
   initCardForm();
 });
-cardZoom.addEventListener('click', (evt) => {
-  closeForm(evt.target, cardZoom);
-});
+// cardZoom.addEventListener('click', (evt) => {
+//   closeForm(evt.target, cardZoom);
+// });
 // устанавливаю обработчик для заполнения формы профиля
 form.addEventListener('submit', saveProfile);
 
